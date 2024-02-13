@@ -1,0 +1,5 @@
+build
+.vscode
+.vs
+WE ARE IN SPACE.fla
+old-logo.png
