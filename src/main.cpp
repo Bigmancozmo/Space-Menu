@@ -13,7 +13,7 @@ class $modify(SMModMenu, MenuLayer) {
 
 		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 		
-        auto spr = ButtonSprite::create("S");
+		auto spr = ButtonSprite::create("S");
 		auto menu = CCMenu::create();
 		
 		auto btn = CCMenuItemSpriteExtra::create(
