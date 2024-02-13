@@ -23,8 +23,9 @@ class $modify(SMModMenu, MenuLayer) {
 	
 		btn->setAnchorPoint(CCPoint(0.5f, 0.5f));
 		btn->setPosition(CCPoint(50.0f, screenSize.height - 40.0f));
-	
+		
 		menu->setPosition(CCPoint(0.0f, 0.0f));
+		menu->setZOrder(16); // Position the menu in front of everything else
 	
 		menu->addChild(btn);
 		this->addChild(menu);
