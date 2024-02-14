@@ -7,6 +7,7 @@
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/GauntletSelectLayer.hpp>
 #include <Geode/modify/LevelSelectLayer.hpp>
+#include <Geode/modify/PauseLayer.hpp>
 
 #include "interface/SMButton.h"
 
@@ -104,5 +105,13 @@ class $modify(LevelSelectLayer){
 		if(!LevelSelectLayer::init(p0)) return false;
 		createButton(this);
 		return true;
+	}
+};
+
+class $modify(PauseLayer){
+	void customSetup(){
+		PauseLayer::customSetup();
+		createButton(this);
+		//return true;
 	}
 };
