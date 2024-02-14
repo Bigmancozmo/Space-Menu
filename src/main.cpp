@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/CreatorLayer.hpp>
-#include "SMButton.h"
+#include "interface/SMButton.h"
 
 using namespace geode::prelude;
 using namespace std;
