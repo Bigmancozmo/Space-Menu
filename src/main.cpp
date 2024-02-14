@@ -5,7 +5,7 @@
 #include <Geode/modify/CreatorLayer.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
 #include <Geode/modify/LevelInfoLayer.hpp>
-#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/modify/GauntletSelectLayer.hpp>
 
 #include "interface/SMButton.h"
 
@@ -90,18 +90,10 @@ class $modify(LevelInfoLayer){
 	}
 };
 
-/*class $modify(PauseLayer){
-	bool init(bool p0){
-		if(!PauseLayer::init(p0)) return false;
-		createButton(this);
-		return true;
-	}
-};*/
-
 class $modify(GauntletSelectLayer){
 	bool init(int p0){
 		if(!GauntletSelectLayer::init(p0)) return false;
 		createButton(this);
 		return true;
 	}
-}
+};
