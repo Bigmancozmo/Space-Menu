@@ -53,3 +53,6 @@ build-*/
 
 # clangd
 .cache/
+
+old-logo.png
+icon.fla
