@@ -10,16 +10,13 @@
 #include <Geode/modify/PauseLayer.hpp>
 
 #include "interface/SMButton.h"
+#include "interface/SMMenu.hpp"
 
 using namespace geode::prelude;
 using namespace std;
 
 void SMButton::onButton(CCObject* sender){
-    FLAlertLayer::create(
-        "Title",    // title
-        "Hi mom!",  // content
-        "OK"        // button
-    )->show();
+    SMMenu::create();
 }
 
 void createButton(CCLayer* layer){
