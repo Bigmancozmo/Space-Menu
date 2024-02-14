@@ -6,6 +6,7 @@
 #include <Geode/modify/LevelBrowserLayer.hpp>
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/GauntletSelectLayer.hpp>
+#include <Geode/modify/LevelSelectLayer.hpp>
 
 #include "interface/SMButton.h"
 
@@ -93,6 +94,14 @@ class $modify(LevelInfoLayer){
 class $modify(GauntletSelectLayer){
 	bool init(int p0){
 		if(!GauntletSelectLayer::init(p0)) return false;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(LevelSelectLayer){
+	bool init(int p0){
+		if(!LevelSelectLayer::init(p0)) return false;
 		createButton(this);
 		return true;
 	}
