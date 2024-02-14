@@ -40,9 +40,20 @@ class $modify(MenuLayer) {
 	bool init(){
 		if(!(MenuLayer::init())) return false;
 
-		cout << "SpaceMenu has spotted a Main Menu!" << endl;
-		cout << "Adding button!" << endl;
+		auto hasBeenUsed = Mod::get()->getSavedValue<bool>("has-been-used");
+
+		if(hasBeenUsed){
+			auto alert = FLAlertLayer::create(
+            	"SpaceMenu",
+            	"Welcome to SpaceMenu!\n<cb>Press right-shift to begin!</c>",
+            	"OK"
+        	);
+			alert->m_scene = this;
+			alert->show();
+		}
 		createButton(this);
+
+		Mod::get()->setSavedValue<bool>("has-been-used", true); // remember that mod has been used before
 
         return true;
 	}
