@@ -1,7 +1,11 @@
 #include <Geode/Geode.hpp>
+
+// layers
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/CreatorLayer.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
+#include <Geode/modify/LevelInfoLayer.hpp>
+
 #include "interface/SMButton.h"
 
 using namespace geode::prelude;
@@ -72,6 +76,14 @@ class $modify(CreatorLayer){
 class $modify(LevelBrowserLayer){
 	bool init(GJSearchObject* p0){
 		if(!LevelBrowserLayer::init(p0)) return false;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(LevelInfoLayer){
+	bool init(LevelInfoLayer* p0, bool p1){
+		if(!LevelInfoLayer::init(p0, p1)) return false;
 		createButton(this);
 		return true;
 	}
