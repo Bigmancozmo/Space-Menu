@@ -42,7 +42,7 @@ class $modify(MenuLayer) {
 
 		auto hasBeenUsed = Mod::get()->getSavedValue<bool>("has-been-used");
 
-		if(hasBeenUsed){
+		if(!hasBeenUsed){
 			auto alert = FLAlertLayer::create(
             	"SpaceMenu",
             	"Welcome to SpaceMenu!\n<cb>Press right-shift to begin!</c>",
@@ -51,10 +51,19 @@ class $modify(MenuLayer) {
 			alert->m_scene = this;
 			alert->show();
 		}
+		
 		createButton(this);
 
-		Mod::get()->setSavedValue<bool>("has-been-used", true); // remember that mod has been used before
+		Mod::get()->setSavedValue<bool>("has-been-used", true);
 
         return true;
+	}
+};
+
+class $modify(CreatorLayer){
+	bool init(){
+		if(!CreatorLayer::init()) return false;
+		createButton(this);
+		return true;
 	}
 };
