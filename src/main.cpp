@@ -82,7 +82,7 @@ class $modify(LevelBrowserLayer){
 };
 
 class $modify(LevelInfoLayer){
-	bool init(LevelInfoLayer* p0, bool p1){
+	bool init(GJGameLevel* p0, bool p1){
 		if(!LevelInfoLayer::init(p0, p1)) return false;
 		createButton(this);
 		return true;
