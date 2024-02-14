@@ -112,6 +112,5 @@ class $modify(PauseLayer){
 	void customSetup(){
 		PauseLayer::customSetup();
 		createButton(this);
-		//return true;
 	}
 };
