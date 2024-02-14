@@ -14,7 +14,7 @@ void SMButton::onButton(CCObject* sender){
     )->show();
 }
 
-void createButtom(CCLayer* layer){
+void createButton(CCLayer* layer){
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 		
 	auto spr = ButtonSprite::create("S");
@@ -42,6 +42,7 @@ class $modify(MenuLayer) {
 
 		cout << "SpaceMenu has spotted a Main Menu!" << endl;
 		cout << "Adding button!" << endl;
+		createButton(this);
 
         return true;
 	}
