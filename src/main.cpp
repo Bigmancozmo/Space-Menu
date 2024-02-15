@@ -9,15 +9,10 @@
 #include <Geode/modify/LevelSelectLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
 
-#include "interface/SMButton.h"
 #include "interface/SMMenu.hpp"
 
 using namespace geode::prelude;
 using namespace std;
-
-void SMButton::onButton(CCObject* sender){
-    SMMenu::create();
-}
 
 void createButton(CCLayer* layer){
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
@@ -41,7 +36,14 @@ void createButton(CCLayer* layer){
 		layer->addChild(menu);
 }
 
-class $modify(MenuLayer) {
+class $modify(SMButton, MenuLayer) {
+	void SMButton::onButton(CCObject* sender){
+		CCScene* sceneRef = CCDirector::sharedDirector()->getSceneReference();
+		cout << sceneRef << endl;
+    	CCLayer* layer = SMMenu::create();
+		//sceneRef->addChild(layer);
+	}
+	
 	bool init(){
 		if(!(MenuLayer::init())) return false;
 

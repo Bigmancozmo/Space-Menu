@@ -6,10 +6,10 @@ using namespace geode::prelude;
 
 class SMMenu : CCLayer {
 public:
-    static SMMenu* create();
+    static CCLayer* create();
 };
 
-SMMenu* SMMenu::create() {
+CCLayer* SMMenu::create() {
     auto layer = CCLayer::create();
     return layer;
 }
