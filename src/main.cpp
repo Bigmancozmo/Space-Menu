@@ -15,9 +15,18 @@
 using namespace geode::prelude;
 using namespace std;
 
+// vars
+CCLayer* onButtonScene = nullptr;
+
+void SMButton::onButton(CCObject* sender){
+	if(onButtonScene != nullptr){ // shouldn't happen, but just in case
+    	CCLayer* layer = SMMenu::create();
+		onButtonScene->addChild(layer);
+	}
+}
+
 void createButton(CCLayer* layer){
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-		
 	auto spr = ButtonSprite::create("S");
 	auto menu = CCMenu::create();
 	
@@ -37,14 +46,7 @@ void createButton(CCLayer* layer){
 		layer->addChild(menu);
 }
 
-class $modify(SMButton, MenuLayer) {
-	void onButton(CCObject* sender){
-		CCScene* sceneRef = CCDirector::sharedDirector()->getSceneReference();
-		cout << sceneRef << endl;
-    	CCLayer* layer = SMMenu::create();
-		//sceneRef->addChild(layer);
-	}
-	
+class $modify(MenuLayer) {
 	bool init(){
 		if(!(MenuLayer::init())) return false;
 
@@ -60,6 +62,7 @@ class $modify(SMButton, MenuLayer) {
 			alert->show();
 		}
 		
+		onButtonScene = this;
 		createButton(this);
 
 		Mod::get()->setSavedValue<bool>("has-been-used", true);
@@ -71,6 +74,7 @@ class $modify(SMButton, MenuLayer) {
 class $modify(CreatorLayer){
 	bool init(){
 		if(!CreatorLayer::init()) return false;
+		onButtonScene = this;
 		createButton(this);
 		return true;
 	}

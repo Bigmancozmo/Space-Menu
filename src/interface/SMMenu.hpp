@@ -11,5 +11,9 @@ public:
 
 CCLayer* SMMenu::create() {
     auto layer = CCLayer::create();
+    layer->setID("spacemenu-ui");
+
+    
+
     return layer;
 }
