@@ -20,7 +20,8 @@ CCLayer* onButtonScene = nullptr;
 
 void SMButton::onButton(CCObject* sender){
 	if(onButtonScene != nullptr){ // shouldn't happen, but just in case
-    	CCLayer* layer = SMMenu::create();
+    	auto layer = SMMenu::create();
+		cout << typeid(layer).name() << endl;
 		onButtonScene->addChild(layer);
 	}
 }
