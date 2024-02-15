@@ -1,6 +1,5 @@
+// geode includes
 #include <Geode/Geode.hpp>
-
-// layers
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/CreatorLayer.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
@@ -9,7 +8,9 @@
 #include <Geode/modify/LevelSelectLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
 
+// spacemenu includes
 #include "interface/SMMenu.hpp"
+#include "interface/SMButton.h"
 
 using namespace geode::prelude;
 using namespace std;
@@ -37,7 +38,7 @@ void createButton(CCLayer* layer){
 }
 
 class $modify(SMButton, MenuLayer) {
-	void SMButton::onButton(CCObject* sender){
+	void onButton(CCObject* sender){
 		CCScene* sceneRef = CCDirector::sharedDirector()->getSceneReference();
 		cout << sceneRef << endl;
     	CCLayer* layer = SMMenu::create();
