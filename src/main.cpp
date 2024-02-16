@@ -75,7 +75,7 @@ void SMButton::onButton(CCObject* sender){
 
 void createButton(Layer* layer){
 	if(spaceMenuLayer != nullptr){
-		spaceMenuLayer->removeFromParentAndCleanup(true);
+		spaceMenuLayer->removeFromParent(true);
 		spaceMenuLayer = nullptr;
 		isOpen = false;
 	}
