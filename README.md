@@ -1,4 +1,4 @@
-<img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/spacemenu_full_logo.png" alt="SpaceMenu Logo With Name" width="50"/>
+<img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/res/SM_FullLogo.png" alt="SpaceMenu Logo With Name" width="50"/>
 
 <span>
   <a href="LICENSE"><img alt="License Badge" src="https://img.shields.io/github/license/Bigmancozmo/Space-Menu?label=license&style=flat-square" /></a>
