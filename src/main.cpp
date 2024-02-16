@@ -11,6 +11,7 @@
 // spacemenu includes
 #include "interface/SMMenu.hpp"
 #include "interface/SMButton.h"
+#include "util/UsefulRenames.h"
 
 using namespace geode::prelude;
 using namespace std;
@@ -47,10 +48,10 @@ void createButton(CCLayer* layer){
 	);
 		btn->setID("spacemenu-button");
 
-		btn->setAnchorPoint(CCPoint(0.5f, 0.5f));
-		btn->setPosition(CCPoint(50.0f, screenSize.height - 40.0f));
+		btn->setAnchorPoint(Vec2(0.5f, 0.5f));
+		btn->setPosition(Vec2(50.0f, screenSize.height - 40.0f));
 		
-		menu->setPosition(CCPoint(0.0f, 0.0f));
+		menu->setPosition(Vec2(0.0f, 0.0f));
 		menu->setZOrder(16); // Position the menu in front of everything else
 		menu->setID("spacemenu-button-menu");
 
