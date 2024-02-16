@@ -1,6 +1,9 @@
 {
 	"geode": "2.0.0-beta.19",
-	"gd": "2.204",
+	"gd": {
+		"win": "2.204",
+		"android": "2.205"
+	},
 	"version": "v1.0.0-alpha.1",
 	"id": "bigmancozmo.spacemenu",
 	"name": "Space Menu",
