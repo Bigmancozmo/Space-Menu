@@ -10,3 +10,4 @@
 #define MoveTo CCMoveTo
 #define Layer CCLayer
 #define EaseElasticOut CCEaseElasticOut
+#define Sprite CCSprite
