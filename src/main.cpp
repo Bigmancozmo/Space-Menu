@@ -32,6 +32,11 @@ void SMButton::onButton(CCObject* sender){
 }
 
 void createButton(CCLayer* layer){
+	if(spaceMenuLayer != nullptr){
+		spaceMenuLayer->removeFromParent();
+		spaceMenuLayer = nullptr;
+	}
+
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
 	auto menu = CCMenu::create();
