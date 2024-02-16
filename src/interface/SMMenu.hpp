@@ -19,5 +19,7 @@ CCLayer* SMMenu::create() {
     text->setPosition(screenSize / 2);
     layer->addChild(text);
 
+    layer->setZOrder(100);
+
     return layer;
 }
