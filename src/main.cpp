@@ -17,11 +17,17 @@ using namespace std;
 
 // vars
 CCLayer* onButtonScene = nullptr;
+CCLayer* spaceMenuLayer = nullptr;
+bool isOpen = false;
 
 void SMButton::onButton(CCObject* sender){
+	isOpen = !isOpen;
 	if(onButtonScene != nullptr){ // shouldn't happen, but just in case
-    	auto layer = SMMenu::create();
-		onButtonScene->addChild(layer);
+    	if(spaceMenuLayer == nullptr){
+			spaceMenuLayer = SMMenu::create();
+			onButtonScene->addChild(spaceMenuLayer);
+		}
+		spaceMenuLayer->setVisible(isOpen);
 	}
 }
 
