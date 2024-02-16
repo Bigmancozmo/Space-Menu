@@ -32,7 +32,7 @@ Layer* SMMenu::create() {
     SM_Logo->setID("sm-logo-full");
 
     auto creatorText = CCLabelBMFont::create("by Bigmancozmo", "goldFont.fnt");
-    creatorText->setID("sm-creator-label")
+    creatorText->setID("sm-creator-label");
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
