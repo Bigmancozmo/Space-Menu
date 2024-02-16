@@ -6,11 +6,11 @@ using namespace geode::prelude;
 
 class SMMenu : CCLayer {
 public:
-    static SMMenu* create();
+    static CCLayer* create();
 };
 
-SMMenu* SMMenu::create() {
-    auto layer = SMMenu::create();
+CCLayer* SMMenu::create() {
+    auto layer = CCLayer::create();
     layer->setID("spacemenu-ui");
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
