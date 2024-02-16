@@ -35,6 +35,7 @@ void createButton(CCLayer* layer){
 	if(spaceMenuLayer != nullptr){
 		spaceMenuLayer->removeFromParent();
 		spaceMenuLayer = nullptr;
+		isOpen = false;
 	}
 
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
