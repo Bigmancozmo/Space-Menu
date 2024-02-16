@@ -19,7 +19,7 @@ public:
 Layer* SMMenu::create() {
     auto layer = Layer::create();
     auto infoLayer = Layer::create();
-    infoLayer->setID("sm-info-layer")
+    infoLayer->setID("sm-info-layer");
     layer->setID("spacemenu-ui");
 
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
