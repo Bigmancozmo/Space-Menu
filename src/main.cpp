@@ -83,6 +83,7 @@ class $modify(CreatorLayer){
 class $modify(LevelBrowserLayer){
 	bool init(GJSearchObject* p0){
 		if(!LevelBrowserLayer::init(p0)) return false;
+		onButtonScene = this;
 		createButton(this);
 		return true;
 	}
@@ -91,6 +92,7 @@ class $modify(LevelBrowserLayer){
 class $modify(LevelInfoLayer){
 	bool init(GJGameLevel* p0, bool p1){
 		if(!LevelInfoLayer::init(p0, p1)) return false;
+		onButtonScene = this;
 		createButton(this);
 		return true;
 	}
@@ -99,6 +101,7 @@ class $modify(LevelInfoLayer){
 class $modify(GauntletSelectLayer){
 	bool init(int p0){
 		if(!GauntletSelectLayer::init(p0)) return false;
+		onButtonScene = this;
 		createButton(this);
 		return true;
 	}
@@ -107,6 +110,7 @@ class $modify(GauntletSelectLayer){
 class $modify(LevelSelectLayer){
 	bool init(int p0){
 		if(!LevelSelectLayer::init(p0)) return false;
+		onButtonScene = this;
 		createButton(this);
 		return true;
 	}
@@ -115,6 +119,7 @@ class $modify(LevelSelectLayer){
 class $modify(PauseLayer){
 	void customSetup(){
 		PauseLayer::customSetup();
+		onButtonScene = this;
 		createButton(this);
 	}
 };
