@@ -1,6 +1,3 @@
-// bigmancozmo was here
-// hello talcility you monkey
-
 #pragma once
 
 #include <Geode/Geode.hpp>
