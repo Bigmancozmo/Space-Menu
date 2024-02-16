@@ -26,7 +26,7 @@ Layer* SMMenu::create() {
     auto logo = Sprite::create("SM_FullLogo.png"_spr);
     logo->setAnchorPoint(Vec2(1.0f, 1.0f));
     logo->setScale(0.670f);
-    logo->setPosition(panelSize - Vec2(25, 25));
+    logo->setPosition(panelSize - Vec2(11, 11));
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
