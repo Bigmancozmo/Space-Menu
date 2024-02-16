@@ -5,5 +5,10 @@
 	"id": "bigmancozmo.spacemenu",
 	"name": "Space Menu",
 	"developer": "Bigmancozmo",
-	"description": ""
+	"description": "",
+	"resources": {
+        "sprites": [
+            "res/SM_FullLogo.png"
+        ]
+    }
 }
