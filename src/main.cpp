@@ -13,23 +13,45 @@
 #include "interface/SMButton.h"
 #include "util/UsefulRenames.h"
 
+// std includes
+#include <iostream>
+#include <sstream>
+#include <string>
+
 using namespace geode::prelude;
 using namespace std;
 
 // vars
 Layer* onButtonScene = nullptr;
 Layer* spaceMenuLayer = nullptr;
+CCSize screenSize;
 bool isOpen = false;
+
+void SMButton::errorOccuredOpening(const char* error){
+	stringstream ss;
+	ss << "An error occurred opening SpaceMenu!\n";
+	ss << error;
+	ss << "Please <cl>contact</c> <cg>Bigmancozmo</c> for help.";
+	FLAlertLayer::create("SpaceMenu", ss.str().c_str(), "OK");
+}
 
 void SMButton::onButton(CCObject* sender){
 	isOpen = !isOpen;
-	if(onButtonScene != nullptr){ // shouldn't happen, but just in case
-    	if(spaceMenuLayer == nullptr){
+	if(onButtonScene != nullptr) {
+		if(spaceMenuLayer == nullptr){
 			spaceMenuLayer = SMMenu::create();
 			onButtonScene->addChild(spaceMenuLayer);
 		}
-		spaceMenuLayer->setVisible(isOpen);
+		if(isOpen){
+			auto moveToAction = MoveTo::create(1, Vec2(50, 10));
+			spaceMenuLayer->setVisible(true);
+		} else {
+			spaceMenuLayer->setVisible(false);
+		}
+	} else {
+		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
+	errorOccuredOpening("<cg>This message</c> is a <cl>test</c>.");
 }
 
 void createButton(Layer* layer){
@@ -39,7 +61,7 @@ void createButton(Layer* layer){
 		isOpen = false;
 	}
 
-	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+	screenSize  = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
 	auto menu = CCMenu::create();
 	
