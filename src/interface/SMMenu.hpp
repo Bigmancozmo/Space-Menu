@@ -27,12 +27,14 @@ Layer* SMMenu::create() {
 
     auto SM_Logo = Sprite::create("SM_FullLogo.png"_spr);
     SM_Logo->setAnchorPoint(Vec2(1.0f, 1.0f));
-    SM_Logo->setScale(0.670f);
+    SM_Logo->setScale(0.67f);
     SM_Logo->setPosition(panelSize - Vec2(11, 11));
     SM_Logo->setID("sm-logo-full");
 
     auto creatorText = CCLabelBMFont::create("by Bigmancozmo", "goldFont.fnt");
     creatorText->setID("sm-creator-label");
+    creatorText->setPosition(panelSize - Vec2(76, 56));
+    creatorText->setScale(0.525f);
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
