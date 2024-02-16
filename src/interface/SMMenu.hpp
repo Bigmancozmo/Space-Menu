@@ -18,15 +18,16 @@ public:
 
 Layer* SMMenu::create() {
     auto layer = Layer::create();
+    auto infoLayer = Layer::create();
     layer->setID("spacemenu-ui");
 
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
     Vec2 panelSize = screenSize - Vec2(50, 50);
 
-    auto logo = Sprite::create("SM_FullLogo.png"_spr);
-    logo->setAnchorPoint(Vec2(1.0f, 1.0f));
-    logo->setScale(0.670f);
-    logo->setPosition(panelSize - Vec2(11, 11));
+    auto SM_Logo = Sprite::create("SM_FullLogo.png"_spr);
+    SM_Logo->setAnchorPoint(Vec2(1.0f, 1.0f));
+    SM_Logo->setScale(0.670f);
+    SM_Logo->setPosition(panelSize - Vec2(11, 11));
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
@@ -40,7 +41,8 @@ Layer* SMMenu::create() {
     // add children
     layer->addChild(background);
     background->addChild(text);
-    background->addChild(logo);
+    infoLayer->addChild(SM_Logo);
+    background->addChild(infoLayer);
 
     return layer;
 }
