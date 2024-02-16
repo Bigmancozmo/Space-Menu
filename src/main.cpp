@@ -43,15 +43,18 @@ void SMButton::onButton(CCObject* sender){
 			onButtonScene->addChild(spaceMenuLayer);
 		}
 		if(isOpen){
-			auto moveToAction = MoveTo::create(1, Vec2(50, 10));
+			auto moveToAction = MoveTo::create(2, screenSize / 2);
+			auto moveTo_eased = EaseElasticOut::create(moveToAction);
+			
+			spaceMenuLayer->setPosition(screenSize / 2 + Vec2(0, screenSize.height));
 			spaceMenuLayer->setVisible(true);
+			spaceMenuLayer->runAction(moveTo_eased);
 		} else {
 			spaceMenuLayer->setVisible(false);
 		}
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
-	errorOccuredOpening("<cg>This message</c> is a <cl>test</c>!");
 }
 
 void createButton(Layer* layer){
