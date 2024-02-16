@@ -32,7 +32,7 @@ void SMButton::errorOccuredOpening(const char* error){
 	ss << "An error occurred opening SpaceMenu!\n";
 	ss << error;
 	ss << "Please <cl>contact</c> <cg>Bigmancozmo</c> for help.";
-	FLAlertLayer::create("SpaceMenu", ss.str().c_str(), "OK");
+	FLAlertLayer::create("SpaceMenu", ss.str().c_str(), "OK")->show();
 }
 
 void SMButton::onButton(CCObject* sender){
@@ -51,7 +51,7 @@ void SMButton::onButton(CCObject* sender){
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
-	errorOccuredOpening("<cg>This message</c> is a <cl>test</c>.");
+	errorOccuredOpening("<cg>This message</c> is a <cl>test</c>1");
 }
 
 void createButton(Layer* layer){
