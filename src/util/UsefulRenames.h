@@ -7,3 +7,5 @@
 */
 
 #define Vec2 CCPoint
+#define MoveTo CCMoveTo
+#define Layer CCLayer

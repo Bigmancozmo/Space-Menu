@@ -17,8 +17,8 @@ using namespace geode::prelude;
 using namespace std;
 
 // vars
-CCLayer* onButtonScene = nullptr;
-CCLayer* spaceMenuLayer = nullptr;
+Layer* onButtonScene = nullptr;
+Layer* spaceMenuLayer = nullptr;
 bool isOpen = false;
 
 void SMButton::onButton(CCObject* sender){
@@ -32,7 +32,7 @@ void SMButton::onButton(CCObject* sender){
 	}
 }
 
-void createButton(CCLayer* layer){
+void createButton(Layer* layer){
 	if(spaceMenuLayer != nullptr){
 		spaceMenuLayer->removeFromParent();
 		spaceMenuLayer = nullptr;

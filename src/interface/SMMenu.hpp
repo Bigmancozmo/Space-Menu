@@ -5,13 +5,13 @@
 
 using namespace geode::prelude;
 
-class SMMenu : CCLayer {
+class SMMenu : Layer {
 public:
-    static CCLayer* create();
+    static Layer* create();
 };
 
-CCLayer* SMMenu::create() {
-    auto layer = CCLayer::create();
+Layer* SMMenu::create() {
+    auto layer = Layer::create();
     layer->setID("spacemenu-ui");
 
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
