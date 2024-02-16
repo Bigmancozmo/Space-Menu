@@ -23,6 +23,10 @@ Layer* SMMenu::create() {
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
     Vec2 panelSize = screenSize - Vec2(50, 50);
 
+    auto logo = Sprite::create("SM_FullLogo.png"_spr);
+    logo->setAnchorPoint(Vec2(0.5f, 1.0f));
+    logo->setPosition(Vec2(panelSize.width / 2, panelSize.height));
+
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
 
@@ -35,6 +39,7 @@ Layer* SMMenu::create() {
     // add children
     layer->addChild(background);
     background->addChild(text);
+    background->addChild(logo);
 
     return layer;
 }
