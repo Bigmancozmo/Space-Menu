@@ -28,12 +28,13 @@ CCSize screenSize;
 bool isOpen = false;
 
 void SMButton::disableMenuClicks(){
-	CCObject* obj = NULL;
+	/*CCObject* obj = NULL;
 	CCARRAY_FOREACH(onButtonScene->getChildren(), obj)
 	{
 		CCNode* node = reinterpret_cast<CCNode*>(obj);
 	    //node->setTouchEnabled(false);
-	}
+	}*/
+	onButtonScene->setTouchEnabled(false);
 }
 
 void SMButton::enableMenuClicks(){
@@ -53,7 +54,7 @@ void SMButton::onButton(CCObject* sender){
 	if(onButtonScene != nullptr) {
 		if(spaceMenuLayer == nullptr){
 			spaceMenuLayer = SMMenu::create();
-			onButtonScene->addChild(spaceMenuLayer);
+			onButtonScene->getParent()->addChild(spaceMenuLayer);
 		}
 		if(isOpen){
 			auto moveToAction = MoveTo::create(1, screenSize / 2);
