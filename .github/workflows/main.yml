@@ -52,10 +52,10 @@ jobs:
           name: Build Output
           path: ${{ steps.build.outputs.build-output }}
 
-      - uses: actions/create-release@v1
+      - name: Create Release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Create Release
           tag_name: nightly
           release_name: Nightly Build
