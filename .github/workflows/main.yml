@@ -55,8 +55,8 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.RELEASE_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "nightly"
           prerelease: true
-          title: "Nightly Build"
+          title: "Nightly"
           files: |
             /home/runner/work/_actions/geode-sdk/build-geode-mod/main/combine/artifacts/geode-build-win/bigmancozmo.spacemenu.geode
