@@ -28,10 +28,11 @@ CCSize screenSize;
 bool isOpen = false;
 
 void SMButton::disableMenuClicks(){
-	CCNode* node = NULL;
-	CCARRAY_FOREACH(parent->getChildren(), node)
+	CCObject* obj = NULL;
+	CCARRAY_FOREACH(onButtonScene->getChildren(), obj)
 	{
-	    node->setPosition(0,0);
+		CCNode* node = reinterpret_cast<CCNode*>(obj);
+	    //node->setTouchEnabled(false);
 	}
 }
 
