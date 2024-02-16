@@ -11,12 +11,11 @@ public:
 };
 
 Layer* SMMenu::create() {
-    auto panelSize = screenSize - Vec2(50, 50);
-
     auto layer = Layer::create();
     layer->setID("spacemenu-ui");
 
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+    Vec2 panelSize = screenSize - Vec2(50, 50);
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(panelSize / 2);
