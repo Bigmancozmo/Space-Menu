@@ -87,17 +87,17 @@ void createButton(Layer* layer){
 	auto btn = CCMenuItemSpriteExtra::create(
 		spr, layer, menu_selector(SMButton::onButton)
 	);
-		btn->setID("spacemenu-button");
+	btn->setID("spacemenu-button");
 
-		btn->setAnchorPoint(Vec2(0.5f, 0.5f));
-		btn->setPosition(Vec2(50.0f, screenSize.height - 40.0f));
+	btn->setAnchorPoint(Vec2(0.5f, 0.5f));
+	btn->setPosition(Vec2(50.0f, screenSize.height - 40.0f));
 		
-		menu->setPosition(Vec2(0.0f, 0.0f));
-		menu->setZOrder(16); // Position the menu in front of everything else
-		menu->setID("spacemenu-button-menu");
+	menu->setPosition(Vec2(0.0f, 0.0f));
+	menu->setZOrder(16); // Position the menu in front of everything else
+	menu->setID("spacemenu-button-menu");
 
-		menu->addChild(btn);
-		layer->addChild(menu);
+	menu->addChild(btn);
+	layer->addChild(menu);
 }
 
 class $modify(MenuLayer) {
