@@ -107,13 +107,23 @@ class $modify(MenuLayer) {
 		auto hasBeenUsed = Mod::get()->getSavedValue<bool>("has-been-used");
 
 		if(!hasBeenUsed){
-			auto alert = FLAlertLayer::create(
-            	"SpaceMenu",
-            	"Welcome to SpaceMenu!\n<cb>Press right-shift to begin!</c>",
-            	"OK"
-        	);
-			alert->m_scene = this;
-			alert->show();
+			#ifndef __ANDROID__
+				auto alert = FLAlertLayer::create(
+            		"SpaceMenu",
+            		"Welcome to SpaceMenu!\n<cb>Press right-shift to begin!</c>",
+            		"OK"
+        		);
+				alert->m_scene = this;
+				alert->show();
+			#else
+				auto alert = FLAlertLayer::create(
+            		"SpaceMenu",
+            		"Welcome to SpaceMenu!\n<cb>Press the S button to begin!</c>",
+            		"OK"
+        		);
+				alert->m_scene = this;
+				alert->show();
+			#endif
 		}
 		
 		onButtonScene = this;
