@@ -11,7 +11,7 @@
 // spacemenu includes
 #include "interface/SMMenu.hpp"
 #include "interface/SMButton.h"
-#include "util/UsefulRenames.h"
+#include "utils/UsefulRenames.h"
 
 // std includes
 #include <iostream>

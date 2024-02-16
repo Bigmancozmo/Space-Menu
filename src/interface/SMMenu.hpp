@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
-#include "util/UsefulRenames.h"
+#include "utils/UsefulRenames.h"
 
 using namespace geode::prelude;
 
