@@ -19,7 +19,7 @@ Layer* SMMenu::create() {
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
 
     auto background = CCScale9Sprite::create("GJ_square02.png");
-    background->setContentSize(screenSize - Vec2(150, 150));
+    background->setContentSize(screenSize - Vec2(50, 50));
     background->setID("sm-background");
 
     layer->setZOrder(100);
