@@ -72,7 +72,7 @@ void SMButton::onButton(CCObject* sender){
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
 }
-
+// test
 void createButton(Layer* layer){
 	if(spaceMenuLayer != nullptr){
 		spaceMenuLayer->removeFromParent(true);
