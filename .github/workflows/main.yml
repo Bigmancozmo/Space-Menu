@@ -59,4 +59,4 @@ jobs:
           prerelease: true
           title: "Nightly Build"
           files: |
-            *.geode
+            ./artifacts/geode-build-win/bigmancozmo.spacemenu.geode
