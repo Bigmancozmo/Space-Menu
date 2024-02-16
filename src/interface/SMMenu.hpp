@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
+#include "util/UsefulRenames.h"
 
 using namespace geode::prelude;
 
@@ -17,9 +18,16 @@ CCLayer* SMMenu::create() {
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
     text->setPosition(screenSize / 2);
-    layer->addChild(text);
+
+    auto background = CCScale9Sprite::create("GJ_square02.png");
+    background->setContentSize(Vec2(150, 150));
+    background->setID("sm-background");
 
     layer->setZOrder(100);
+
+    // add children
+    layer->addChild(text);
+    layer->addChild(background);
 
     return layer;
 }
