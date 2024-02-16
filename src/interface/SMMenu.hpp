@@ -17,7 +17,6 @@ Layer* SMMenu::create() {
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 
     auto text = CCLabelBMFont::create("Hello, World!", "bigFont.fnt");
-    text->setPosition(screenSize / 2);
 
     auto background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(Vec2(150, 150));
@@ -26,8 +25,8 @@ Layer* SMMenu::create() {
     layer->setZOrder(100);
 
     // add children
-    layer->addChild(text);
     layer->addChild(background);
+    background->addChild(text);
 
     return layer;
 }
