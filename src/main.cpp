@@ -43,7 +43,7 @@ void SMButton::onButton(CCObject* sender){
 			onButtonScene->addChild(spaceMenuLayer);
 		}
 		if(isOpen){
-			auto moveToAction = MoveTo::create(2, screenSize / 2);
+			auto moveToAction = MoveTo::create(1, screenSize / 2);
 			auto moveTo_eased = EaseElasticOut::create(moveToAction);
 			
 			spaceMenuLayer->setPosition(screenSize / 2 + Vec2(0, screenSize.height));
@@ -64,7 +64,7 @@ void createButton(Layer* layer){
 		isOpen = false;
 	}
 
-	screenSize  = CCDirector::sharedDirector()->getWinSize();
+	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
 	auto menu = CCMenu::create();
 	
