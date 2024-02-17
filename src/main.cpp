@@ -34,7 +34,7 @@ void SMButton::errorOccuredOpening(const char* error){
 	FLAlertLayer::create("SpaceMenu", ss.str().c_str(), "OK")->show();
 }
 
-void SMButton::onButton(CCObject* sender){
+void SMButton::onButton(Object* sender){
 	if(onButtonScene != nullptr) {
 		if(spaceMenuLayer == nullptr){
 			spaceMenuLayer = SMMenu::create();
