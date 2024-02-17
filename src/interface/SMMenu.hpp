@@ -61,7 +61,5 @@ Layer* SMMenu::create() {
     infoLayer->addChild(creatorText);
     background->addChild(infoLayer);
 
-    
-
     return layer;
 }
