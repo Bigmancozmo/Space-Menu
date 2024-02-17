@@ -61,5 +61,7 @@ Layer* SMMenu::create() {
     infoLayer->addChild(creatorText);
     background->addChild(infoLayer);
 
+    layer->setTouchPriority(-1000);
+
     return layer;
 }
