@@ -15,10 +15,22 @@ using namespace std;
 
 class SMMenu : Layer {
 public:
-    static Layer* create();
+    static SMMenu* create();
+    SMMenu();
+    CCLayer* getLayer();
+private:
+    Layer* meAsLayer;
 };
 
-Layer* SMMenu::create() {
+SMMenu* SMMenu::create() {
+    return new SMMenu();
+}
+
+CCLayer* SMMenu::getLayer(){
+    return meAsLayer;
+}
+
+SMMenu::SMMenu(){
     Color4B fadeColor = {0, 0, 0, 105};
     auto fadeBgLayer = LayerColor::create(fadeColor);
     auto layer = Layer::create();
@@ -71,5 +83,5 @@ Layer* SMMenu::create() {
     layer->setPosition(layer->getPosition() + (screenSize / 2));
     fadeBgLayer->setPosition(fadeBgLayer->getPosition() - (screenSize / 2));
 
-    return fadeBgLayer;
+    meAsLayer = fadeBgLayer;
 }

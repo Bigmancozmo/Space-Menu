@@ -39,7 +39,7 @@ void SMButton::onButton(CCObject* sender){
 	isOpen = !isOpen;
 	if(onButtonScene != nullptr) {
 		if(spaceMenuLayer == nullptr){
-			spaceMenuLayer = SMMenu::create();
+			spaceMenuLayer = SMMenu::create()->getLayer();
 			onButtonScene->getParent()->addChild(spaceMenuLayer);
 		}
 		
