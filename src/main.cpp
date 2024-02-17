@@ -220,8 +220,8 @@ class $modify(LeaderboardsLayer){
 #endif
 
 class $modify(SecretLayer4){
-	bool init(){
-		if(!SecretLayer4::init()) return false;
+	SecretLayer4* create(){
+		if(!SecretLayer4::create()) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
@@ -229,8 +229,8 @@ class $modify(SecretLayer4){
 };
 
 class $modify(SecretLayer){
-	bool init(){
-		if(!SecretLayer::init()) return false;
+	SecretLayer* create(){
+		if(!SecretLayer::create()) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
@@ -238,8 +238,8 @@ class $modify(SecretLayer){
 };
 
 class $modify(SecretLayer2){
-	bool init(){
-		if(!SecretLayer2::init()) return false;
+	SecretLayer2* create(){
+		if(!SecretLayer2::create()) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
