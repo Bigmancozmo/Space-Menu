@@ -14,22 +14,27 @@ using namespace geode::prelude;
 using namespace std;
 
 class SMMenu : Layer {
-public: // public funcs
+public:
     static SMMenu* create();
     SMMenu();
     CCLayer* getLayer();
     void openMenu();
     void closeMenu();
     void toggleMenu();
-
-private: // private vars
+private:
     Layer* meAsLayer = nullptr;
     bool isOpen = false;
     Size screenSize;
-
-private: // private funcs
     void onExitButton(Object* sender);
 };
+
+// button functions! yay!
+
+void SMMenu::onExitButton(Object* sender) {
+    closeMenu();
+}
+
+// no more button functions >:(
 
 SMMenu* SMMenu::create() {
     return new SMMenu();
@@ -104,6 +109,18 @@ SMMenu::SMMenu(){
 
     layer->setZOrder(100);
 
+    // close button
+    auto exitButtonSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+    auto btn = CCMenuItemSpriteExtra::create(
+        exitButtonSprite,
+        background,
+        menu_selector(SMMenu::onExitButton)
+    );
+    btn->setPosition(Vec2(0, panelSize.y));
+
+    // menu
+    //auto menu = Menu::create();
+
     // add children
     layer->addChild(background);
     background->addChild(text);
@@ -111,6 +128,8 @@ SMMenu::SMMenu(){
     infoLayer->addChild(creatorText);
     background->addChild(infoLayer);
     fadeBgLayer->addChild(layer);
+    background->addChild(menu);
+    //menu->addChild(exitButton);
 
     layer->setTouchPriority(-1000);
 
