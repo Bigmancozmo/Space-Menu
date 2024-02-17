@@ -112,6 +112,7 @@ SMMenu::SMMenu(){
     background->setID("sm-background");
 
     layer->setZOrder(100);
+    fadeBgLayer->setZOrder(90);
 
     // close button
     auto exitButtonSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
