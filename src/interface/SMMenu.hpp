@@ -116,7 +116,7 @@ SMMenu::SMMenu(){
         background,
         menu_selector(SMMenu::onExitButton)
     );
-    btn->setPosition(Vec2(0, panelSize.y));
+    exitButton->setPosition(Vec2(0, panelSize.y));
 
     // menu
     auto menu = Menu::create();
