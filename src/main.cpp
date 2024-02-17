@@ -14,6 +14,8 @@
 #include <Geode/modify/LeaderboardsLayer.hpp>
 #include <Geode/modify/SecretRewardsLayer.hpp>
 #include <Geode/modify/SecretLayer4.hpp>
+#include <Geode/modify/SecretLayer2.hpp>
+#include <Geode/modify/SecretLayer.hpp>
 
 // spacemenu includes
 #include "interface/SMMenu.hpp"
@@ -220,17 +222,8 @@ class $modify(LeaderboardsLayer){
 #endif
 
 class $modify(SecretLayer4){
-	SecretLayer4* create(){
-		if(!SecretLayer4::create()) return false;
-		onButtonScene = this;
-		createButton(this);
-		return true;
-	}
-};
-
-class $modify(SecretLayer){
-	SecretLayer* create(){
-		if(!SecretLayer::create()) return false;
+	bool init(){
+		if(!SecretLayer4::init()) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
@@ -238,8 +231,8 @@ class $modify(SecretLayer){
 };
 
 class $modify(SecretLayer2){
-	SecretLayer2* create(){
-		if(!SecretLayer2::create()) return false;
+	bool init(){
+		if(!SecretLayer2::init()) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
