@@ -119,7 +119,7 @@ SMMenu::SMMenu(){
     btn->setPosition(Vec2(0, panelSize.y));
 
     // menu
-    //auto menu = Menu::create();
+    auto menu = Menu::create();
 
     // add children
     layer->addChild(background);
@@ -129,7 +129,7 @@ SMMenu::SMMenu(){
     background->addChild(infoLayer);
     fadeBgLayer->addChild(layer);
     background->addChild(menu);
-    //menu->addChild(exitButton);
+    menu->addChild(exitButton);
 
     layer->setTouchPriority(-1000);
 
