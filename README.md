@@ -1,6 +1,6 @@
 # <img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/res/SM_FullLogo.png" alt="SpaceMenu Logo With Name">
 
-<span>
+<span align=center>
   <a href="LICENSE"><img alt="License Badge" src="https://img.shields.io/github/license/Bigmancozmo/Space-Menu?label=license&style=flat-square" /></a>
   &ensp;&macr;&ensp;
   <a href="https://github.com/Bigmancozmo/Space-Menu/issues"><img alt="GitHub Issues - Open" src="https://img.shields.io/github/issues/Bigmancozmo/Space-Menu?style=flat-square" /></a>
