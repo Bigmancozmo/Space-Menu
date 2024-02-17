@@ -121,6 +121,7 @@ SMMenu::SMMenu(){
         background,
         menu_selector(SMMenu::onExitButton)
     );
+    exitButton->setPosition(-5.0f, -5.0f);
 
     // menu
     auto menu = Menu::create();
