@@ -10,6 +10,8 @@
     #include "../utils/UsefulRenames.h"
 #endif
 
+#include "SMRandomData.hpp"
+
 using namespace geode::prelude;
 using namespace std;
 
@@ -22,8 +24,6 @@ public:
     void closeMenu();
     void toggleMenu();
 private:
-    Layer* meAsLayer = nullptr;
-    bool isOpen = false;
     Size screenSize;
     void onExitButton(Object* sender);
 };
@@ -43,14 +43,14 @@ SMMenu* SMMenu::create() {
 void SMMenu::openMenu(){
     auto moveToAction = MoveTo::create(1, Vec2(0, 0));
 	auto moveTo_eased = EaseElasticOut::create(moveToAction);
-	meAsLayer->setPosition(Vec2(0, screenSize.height));
-	meAsLayer->runAction(moveTo_eased);
-	meAsLayer->setVisible(true);
+	SMRandomData::meAsLayer->setPosition(Vec2(0, screenSize.height));
+	SMRandomData::meAsLayer->runAction(moveTo_eased);
+	SMRandomData::meAsLayer->setVisible(true);
 }
 
 void SMMenu::toggleMenu(){
-    isOpen = !isOpen;
-    if(isOpen){
+    SMRandomData::isOpen = !(SMRandomData::isOpen);
+    if(SMRandomData::isOpen){
         openMenu();
     } else {
         closeMenu();
@@ -58,13 +58,14 @@ void SMMenu::toggleMenu(){
 }
 
 void SMMenu::closeMenu(){
-    meAsLayer->removeFromParent();
-	meAsLayer = nullptr;
-	isOpen = false;
+    //SMRandomData::meAsLayer->removeFromParent();
+	//SMRandomData::meAsLayer = nullptr;
+	//SMRandomData::isOpen = true;
+    SMRandomData::meAsLayer->setVisible(false);
 }
 
 CCLayer* SMMenu::getLayer(){
-    return meAsLayer;
+    return SMRandomData::meAsLayer;
 }
 
 SMMenu::SMMenu(){
@@ -137,5 +138,5 @@ SMMenu::SMMenu(){
     layer->setPosition(layer->getPosition() + (screenSize / 2));
     fadeBgLayer->setPosition(fadeBgLayer->getPosition() - (screenSize / 2));
 
-    meAsLayer = fadeBgLayer;
+    SMRandomData::meAsLayer = fadeBgLayer;
 }
