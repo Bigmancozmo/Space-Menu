@@ -12,8 +12,6 @@
     #include "../data/SMRandomData.hpp"
 #endif
 
-
-
 using namespace geode::prelude;
 using namespace std;
 
