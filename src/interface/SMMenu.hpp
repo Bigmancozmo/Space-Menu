@@ -18,12 +18,42 @@ public:
     static SMMenu* create();
     SMMenu();
     CCLayer* getLayer();
+    void openMenu();
+    void closeMenu();
+    void toggleMenu();
 private:
-    Layer* meAsLayer;
+    Layer* meAsLayer = nullptr;
+    bool isOpen = false;
+    Size screenSize;
 };
 
 SMMenu* SMMenu::create() {
     return new SMMenu();
+}
+
+void SMMenu::openMenu(){
+    auto moveToAction = MoveTo::create(1, Vec2(0, 0));
+	auto moveTo_eased = EaseElasticOut::create(moveToAction);
+	meAsLayer->setPosition(Vec2(0, screenSize.height));
+	meAsLayer->runAction(moveTo_eased);
+	meAsLayer->setVisible(true);
+}
+
+void SMMenu::toggleMenu(){
+    isOpen = !isOpen;
+    if(isOpen){
+        openMenu();
+    } else {
+        closeMenu();
+    }
+}
+
+void SMMenu::closeMenu(){
+    if(meAsLayer != nullptr){
+		meAsLayer->removeFromParent();
+		meAsLayer = nullptr;
+		isOpen = false;
+	}
 }
 
 CCLayer* SMMenu::getLayer(){
@@ -31,6 +61,8 @@ CCLayer* SMMenu::getLayer(){
 }
 
 SMMenu::SMMenu(){
+    screenSize = CCDirector::sharedDirector()->getWinSize();
+
     Color4B fadeColor = {0, 0, 0, 105};
     auto fadeBgLayer = LayerColor::create(fadeColor);
     auto layer = Layer::create();
@@ -46,7 +78,6 @@ SMMenu::SMMenu(){
     layer->setKeypadEnabled(true);
   	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 
-    Size screenSize = CCDirector::sharedDirector()->getWinSize();
     Vec2 panelSize = screenSize - Vec2(50, 50);
 
     auto SM_Logo = Sprite::create("SM_FullLogo.png"_spr);

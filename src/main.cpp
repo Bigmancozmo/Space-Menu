@@ -23,9 +23,8 @@ using namespace std;
 
 // vars
 Layer* onButtonScene = nullptr;
-Layer* spaceMenuLayer = nullptr;
+SMMenu* spaceMenuLayer = nullptr;
 Size screenSize;
-bool isOpen = false;
 
 void SMButton::errorOccuredOpening(const char* error){
 	stringstream ss;
@@ -36,39 +35,19 @@ void SMButton::errorOccuredOpening(const char* error){
 }
 
 void SMButton::onButton(CCObject* sender){
-	isOpen = !isOpen;
 	if(onButtonScene != nullptr) {
 		if(spaceMenuLayer == nullptr){
-			spaceMenuLayer = SMMenu::create()->getLayer();
-			onButtonScene->getParent()->addChild(spaceMenuLayer);
+			spaceMenuLayer = SMMenu::create();
+			onButtonScene->getParent()->addChild(spaceMenuLayer->getLayer());
 		}
-		
-		if(isOpen){
-			auto moveToAction = MoveTo::create(1, Vec2(0, 0));
-			auto moveTo_eased = EaseElasticOut::create(moveToAction);
-			
-			spaceMenuLayer->setPosition(Vec2(0, screenSize.height));
-			spaceMenuLayer->runAction(moveTo_eased);
-			spaceMenuLayer->setVisible(true);
-		} else {
-			if(spaceMenuLayer != nullptr){
-				spaceMenuLayer->removeFromParent();
-				spaceMenuLayer = nullptr;
-				isOpen = false;
-			}
-		}
+
+		spaceMenuLayer->toggleMenu();
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
 }
 
 void createButton(Layer* layer){
-	if(spaceMenuLayer != nullptr){
-		spaceMenuLayer->removeFromParent();
-		spaceMenuLayer = nullptr;
-		isOpen = false;
-	}
-
 	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
 	auto menu = CCMenu::create();
