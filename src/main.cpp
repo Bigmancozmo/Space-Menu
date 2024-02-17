@@ -27,20 +27,6 @@ Layer* spaceMenuLayer = nullptr;
 CCSize screenSize;
 bool isOpen = false;
 
-void SMButton::disableMenuClicks(){
-	/*CCObject* obj = NULL;
-	CCARRAY_FOREACH(onButtonScene->getChildren(), obj)
-	{
-		CCNode* node = reinterpret_cast<CCNode*>(obj);
-	    //node->setTouchEnabled(false);
-	}*/
-	onButtonScene->setTouchEnabled(false);
-}
-
-void SMButton::enableMenuClicks(){
-	
-}
-
 void SMButton::errorOccuredOpening(const char* error){
 	stringstream ss;
 	ss << "An error occurred opening SpaceMenu!\n";
@@ -62,11 +48,9 @@ void SMButton::onButton(CCObject* sender){
 			
 			spaceMenuLayer->setPosition(screenSize / 2 + Vec2(0, screenSize.height));
 			spaceMenuLayer->setVisible(true);
-			disableMenuClicks();
 			spaceMenuLayer->runAction(moveTo_eased);
 		} else {
 			spaceMenuLayer->setVisible(false);
-			enableMenuClicks();
 		}
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");

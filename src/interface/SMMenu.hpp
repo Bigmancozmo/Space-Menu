@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
+#include <iostream>
 
 // windows includes
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
@@ -10,6 +11,7 @@
 #endif
 
 using namespace geode::prelude;
+using namespace std;
 
 class SMMenu : Layer {
 public:
@@ -51,6 +53,11 @@ Layer* SMMenu::create() {
     infoLayer->addChild(SM_Logo);
     infoLayer->addChild(creatorText);
     background->addChild(infoLayer);
+
+    auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
+  	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio()+2);
+    cout << touchDispatcher->getForcePrio()+2 << endl;
+	layer->setTouchEnabled(true);
 
     return layer;
 }
