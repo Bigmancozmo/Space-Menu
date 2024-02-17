@@ -25,11 +25,11 @@ Layer* SMMenu::create() {
     layer->setID("spacemenu-ui");
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-  	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
     layer->setTouchEnabled(true);
     layer->setTouchMode(kCCTouchesOneByOne);
     layer->setMouseEnabled(true);
     layer->setKeypadEnabled(true);
+  	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
     Vec2 panelSize = screenSize - Vec2(50, 50);
