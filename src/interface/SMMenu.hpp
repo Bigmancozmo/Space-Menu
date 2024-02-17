@@ -19,7 +19,7 @@ public:
 };
 
 Layer* SMMenu::create() {
-    Color4B fadeColor = {0, 0, 0, 102};
+    Color4B fadeColor = {0, 0, 0, 105};
     auto fadeBgLayer = LayerColor::create(fadeColor);
     auto layer = Layer::create();
     auto infoLayer = Layer::create();
