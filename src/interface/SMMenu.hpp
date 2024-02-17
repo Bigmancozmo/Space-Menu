@@ -46,6 +46,7 @@ void SMMenu::openMenu(){
 	SMRandomData::meAsLayer->setPosition(Vec2(0, screenSize.height));
 	SMRandomData::meAsLayer->runAction(moveTo_eased);
 	SMRandomData::meAsLayer->setVisible(true);
+	SMRandomData::meAsLayer->setTouchPriority(-1000);
 }
 
 void SMMenu::toggleMenu(){
