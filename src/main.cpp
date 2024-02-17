@@ -42,15 +42,13 @@ void SMButton::onButton(CCObject* sender){
 			spaceMenuLayer = SMMenu::create();
 			onButtonScene->getParent()->addChild(spaceMenuLayer);
 		}
+		spaceMenuLayer->setVisible(isOpen);
 		if(isOpen){
 			auto moveToAction = MoveTo::create(1, screenSize / 2);
 			auto moveTo_eased = EaseElasticOut::create(moveToAction);
 			
 			spaceMenuLayer->setPosition(screenSize / 2 + Vec2(0, screenSize.height));
-			spaceMenuLayer->setVisible(true);
 			spaceMenuLayer->runAction(moveTo_eased);
-		} else {
-			spaceMenuLayer->setVisible(false);
 		}
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
