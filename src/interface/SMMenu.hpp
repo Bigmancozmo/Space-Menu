@@ -56,7 +56,11 @@ Layer* SMMenu::create() {
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
   	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
-	layer->setTouchEnabled(true);
+
+    layer->setTouchEnabled(true);
+    layer->setTouchMode(kCCTouchesOneByOne);
+    layer->setMouseEnabled(true);
+    layer->setKeypadEnabled(true);
 
     return layer;
 }
