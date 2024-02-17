@@ -34,7 +34,7 @@ Layer* SMMenu::create() {
     layer->setKeypadEnabled(true);
   	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 
-    CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+    Size screenSize = CCDirector::sharedDirector()->getWinSize();
     Vec2 panelSize = screenSize - Vec2(50, 50);
 
     auto SM_Logo = Sprite::create("SM_FullLogo.png"_spr);

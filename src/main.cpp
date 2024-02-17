@@ -24,7 +24,7 @@ using namespace std;
 // vars
 Layer* onButtonScene = nullptr;
 Layer* spaceMenuLayer = nullptr;
-CCSize screenSize;
+Size screenSize;
 bool isOpen = false;
 
 void SMButton::errorOccuredOpening(const char* error){
