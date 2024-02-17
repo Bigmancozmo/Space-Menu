@@ -51,7 +51,9 @@ void SMMenu::openMenu(){
 
 void SMMenu::toggleMenu(){
     SMRandomData::isOpen = !(SMRandomData::isOpen);
-    if(SMRandomData::isOpen){
+	//cout << "TP = -1000" << endl;
+    //SMRandomData::smPanelLayer->setTouchPriority(-1000);
+	if(SMRandomData::isOpen){
         openMenu();
     } else {
         closeMenu();
@@ -59,11 +61,12 @@ void SMMenu::toggleMenu(){
 }
 
 void SMMenu::closeMenu(){
-    //SMRandomData::meAsLayer->removeFromParent();
-	//SMRandomData::meAsLayer = nullptr;
-	//SMRandomData::isOpen = true;
-    SMRandomData::meAsLayer->setVisible(false);
-    SMRandomData::meAsLayer->setTouchPriority(0);
+    SMRandomData::meAsLayer->removeFromParent();
+	SMRandomData::meAsLayer = nullptr;
+	SMRandomData::isOpen = true;
+    //SMRandomData::meAsLayer->setVisible(false);
+    //SMRandomData::smPanelLayer->setTouchPriority(0);
+	//cout << "TP = 0" << endl;
 }
 
 CCLayer* SMMenu::getLayer(){
@@ -80,8 +83,6 @@ SMMenu::SMMenu(){
     infoLayer->setID("sm-info-layer");
     layer->setID("spacemenu-panel");
     fadeBgLayer->setID("spacemenu-ui");
-
-    SMRandomData::smPanelLayer = layer;
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     layer->setTouchEnabled(true);
@@ -137,7 +138,7 @@ SMMenu::SMMenu(){
     background->addChild(menu);
     menu->addChild(exitButton);
 
-    fadeBgLayer->setTouchPriority(-1000);
+    layer->setTouchPriority(-1000);
     menu->setTouchPriority(-1100);
 
     // fix positioning
@@ -145,4 +146,5 @@ SMMenu::SMMenu(){
     fadeBgLayer->setPosition(fadeBgLayer->getPosition() - (screenSize / 2));
 
     SMRandomData::meAsLayer = fadeBgLayer;
+	SMRandomData::smPanelLayer = layer;
 }

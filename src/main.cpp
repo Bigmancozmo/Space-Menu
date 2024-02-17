@@ -12,6 +12,7 @@
 #include "interface/SMMenu.hpp"
 #include "interface/SMButton.h"
 #include "utils/UsefulRenames.h"
+#include "interface/SMRandomData.hpp"
 
 // std includes
 #include <iostream>
@@ -36,7 +37,7 @@ void SMButton::errorOccuredOpening(const char* error){
 
 void SMButton::onButton(Object* sender){
 	if(onButtonScene != nullptr) {
-		if(spaceMenuLayer == nullptr){
+		if((spaceMenuLayer == nullptr) || (SMRandomData::meAsLayer == nullptr) || (SMRandomData::smPanelLayer == nullptr)){
 			spaceMenuLayer = SMMenu::create();
 			onButtonScene->getParent()->addChild(spaceMenuLayer->getLayer());
 		}
