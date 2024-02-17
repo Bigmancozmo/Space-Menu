@@ -58,11 +58,9 @@ void SMMenu::toggleMenu(){
 }
 
 void SMMenu::closeMenu(){
-    if(meAsLayer != nullptr){
-		meAsLayer->removeFromParent();
-		meAsLayer = nullptr;
-		isOpen = false;
-	}
+    meAsLayer->removeFromParent();
+	meAsLayer = nullptr;
+	isOpen = false;
 }
 
 CCLayer* SMMenu::getLayer(){
@@ -116,10 +114,11 @@ SMMenu::SMMenu(){
         background,
         menu_selector(SMMenu::onExitButton)
     );
-    exitButton->setPosition(Vec2(0, panelSize.y));
 
     // menu
     auto menu = Menu::create();
+    menu->setAnchorPoint(Vec2(0.0f, 1.0f));
+    menu->setPositionY(panelSize.y);
 
     // add children
     layer->addChild(background);
@@ -132,6 +131,7 @@ SMMenu::SMMenu(){
     menu->addChild(exitButton);
 
     layer->setTouchPriority(-1000);
+    menu->setTouchPriority(-1100);
 
     // fix positioning
     layer->setPosition(layer->getPosition() + (screenSize / 2));
