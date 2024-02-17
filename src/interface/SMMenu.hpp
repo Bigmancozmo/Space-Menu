@@ -55,8 +55,7 @@ Layer* SMMenu::create() {
     background->addChild(infoLayer);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-  	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio()+2);
-    cout << touchDispatcher->getForcePrio()+2 << endl;
+  	touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 	layer->setTouchEnabled(true);
 
     return layer;
