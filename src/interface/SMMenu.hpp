@@ -67,5 +67,9 @@ Layer* SMMenu::create() {
 
     layer->setTouchPriority(-1000);
 
+    // fix positioning
+    layer->setPosition(layer->getPosition() + (screenSize / 2));
+    fadeBgLayer->setPosition(fadeBgLayer->getPosition() - (screenSize / 2));
+
     return fadeBgLayer;
 }
