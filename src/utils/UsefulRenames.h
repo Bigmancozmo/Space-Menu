@@ -11,3 +11,4 @@
 #define Layer CCLayer
 #define EaseElasticOut CCEaseElasticOut
 #define Sprite CCSprite
+#define LayerColor CCLayerColor
