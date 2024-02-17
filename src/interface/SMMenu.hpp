@@ -42,10 +42,14 @@ SMMenu* SMMenu::create() {
 
 void SMMenu::openMenu(){
     auto moveToAction = MoveTo::create(1, Vec2(0, 0));
-	auto moveTo_eased = EaseElasticOut::create(moveToAction);
-	SMRandomData::meAsLayer->setPosition(Vec2(0, screenSize.height));
-	SMRandomData::meAsLayer->runAction(moveTo_eased);
-	SMRandomData::meAsLayer->setVisible(true);
+    SMRandomData::meAsLayer->setPosition(Vec2(0, screenSize.height));
+    #if __APPLE__
+        SMRandomData::meAsLayer->runAction(moveToAction);
+    #else
+        auto moveTo_eased = EaseElasticOut::create(moveToAction);
+	    SMRandomData::meAsLayer->runAction(moveTo_eased);
+    #endif
+    SMRandomData::meAsLayer->setVisible(true);
 	SMRandomData::meAsLayer->setTouchPriority(-1000);
 }
 
