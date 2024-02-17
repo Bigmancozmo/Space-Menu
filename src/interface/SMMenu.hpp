@@ -6,11 +6,13 @@
 // windows includes
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     #include "utils/UsefulRenames.h"
+    #include "data/SMRandomData.hpp"
 #else
     #include "../utils/UsefulRenames.h"
+    #include "../data/SMRandomData.hpp"
 #endif
 
-#include "SMRandomData.hpp"
+
 
 using namespace geode::prelude;
 using namespace std;

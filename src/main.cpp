@@ -7,12 +7,13 @@
 #include <Geode/modify/GauntletSelectLayer.hpp>
 #include <Geode/modify/LevelSelectLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
+#include <Geode/modify/GJGarageLayer.hpp>
 
 // spacemenu includes
 #include "interface/SMMenu.hpp"
 #include "interface/SMButton.h"
 #include "utils/UsefulRenames.h"
-#include "interface/SMRandomData.hpp"
+#include "data/SMRandomData.hpp"
 
 // std includes
 #include <iostream>
@@ -153,5 +154,14 @@ class $modify(PauseLayer){
 		PauseLayer::customSetup();
 		onButtonScene = this;
 		createButton(this);
+	}
+};
+
+class $modify(GJGarageLayer){
+	bool init(){
+		if(!GJGarageLayer::init()) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
 	}
 };
