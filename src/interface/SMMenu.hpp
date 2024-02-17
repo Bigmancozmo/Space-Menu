@@ -62,10 +62,7 @@ void SMMenu::closeMenu(){
 	//SMRandomData::meAsLayer = nullptr;
 	//SMRandomData::isOpen = true;
     SMRandomData::meAsLayer->setVisible(false);
-    SMRandomData::smPanelLayer->setTouchEnabled(true);
-    SMRandomData::smPanelLayer->setTouchMode(kCCTouchesOneByOne);
-    SMRandomData::smPanelLayer->setMouseEnabled(true);
-    SMRandomData::smPanelLayer->setKeypadEnabled(true);
+    SMRandomData::meAsLayer->setTouchPriority(0);
 }
 
 CCLayer* SMMenu::getLayer(){
@@ -126,6 +123,7 @@ SMMenu::SMMenu(){
     auto menu = Menu::create();
     menu->setAnchorPoint(Vec2(0.0f, 1.0f));
     menu->setPositionY(panelSize.y);
+	menu->setPositionX(0);
     menu->setID("spacemenu-ui-ccmenu");
 
     // add children
@@ -138,7 +136,7 @@ SMMenu::SMMenu(){
     background->addChild(menu);
     menu->addChild(exitButton);
 
-    layer->setTouchPriority(-1000);
+    fadeBgLayer->setTouchPriority(-1000);
     menu->setTouchPriority(-1100);
 
     // fix positioning

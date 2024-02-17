@@ -40,7 +40,7 @@ void SMButton::onButton(Object* sender){
 			spaceMenuLayer = SMMenu::create();
 			onButtonScene->getParent()->addChild(spaceMenuLayer->getLayer());
 		}
-		spaceMenuLayer->toggleMenu();
+		spaceMenuLayer->openMenu();
 	} else {
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
