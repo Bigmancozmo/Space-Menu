@@ -44,10 +44,10 @@ void SMButton::onButton(CCObject* sender){
 		}
 		
 		if(isOpen){
-			auto moveToAction = MoveTo::create(1, screenSize / 2);
+			auto moveToAction = MoveTo::create(1, Vec2(0, 0));
 			auto moveTo_eased = EaseElasticOut::create(moveToAction);
 			
-			spaceMenuLayer->setPosition(screenSize / 2 + Vec2(0, screenSize.height));
+			spaceMenuLayer->setPosition(Vec2(0, screenSize.height));
 			spaceMenuLayer->runAction(moveTo_eased);
 			spaceMenuLayer->setVisible(true);
 		} else {
