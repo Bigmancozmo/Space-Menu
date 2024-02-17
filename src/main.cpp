@@ -207,11 +207,13 @@ class $modify(LeaderboardsLayer){
 	}
 };
 
-class $modify(SecretRewardsLayer){
-	bool init(bool p0){
-		if(!SecretRewardsLayer::init(p0)) return false;
-		onButtonScene = this;
-		createButton(this);
-		return true;
-	}
-};
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined(__ANDROID__)
+	class $modify(SecretRewardsLayer){ // doesnt work on mac
+		bool init(bool p0){
+			if(!SecretRewardsLayer::init(p0)) return false;
+			onButtonScene = this;
+			createButton(this);
+			return true;
+		}
+	};
+#endif
