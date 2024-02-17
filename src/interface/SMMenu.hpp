@@ -14,17 +14,21 @@ using namespace geode::prelude;
 using namespace std;
 
 class SMMenu : Layer {
-public:
+public: // public funcs
     static SMMenu* create();
     SMMenu();
     CCLayer* getLayer();
     void openMenu();
     void closeMenu();
     void toggleMenu();
-private:
+
+private: // private vars
     Layer* meAsLayer = nullptr;
     bool isOpen = false;
     Size screenSize;
+
+private: // private funcs
+    void onExitButton(Object* sender);
 };
 
 SMMenu* SMMenu::create() {

@@ -2,8 +2,8 @@
 
 /*
     Some useful class "renames" for me since
-    I use cocos2d-x 4.0 more than this version
-    so I'm more used to these names.
+    I use cocos2d-x 4.x more than 2.x so I'm
+    more used to using these class names.
 */
 
 #define Vec2 CCPoint
