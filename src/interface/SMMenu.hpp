@@ -111,7 +111,7 @@ SMMenu::SMMenu(){
 
     // close button
     auto exitButtonSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
-    auto btn = CCMenuItemSpriteExtra::create(
+    auto exitButton = CCMenuItemSpriteExtra::create(
         exitButtonSprite,
         background,
         menu_selector(SMMenu::onExitButton)
