@@ -13,6 +13,7 @@
 #include <Geode/modify/GauntletLayer.hpp>
 #include <Geode/modify/LeaderboardsLayer.hpp>
 #include <Geode/modify/SecretRewardsLayer.hpp>
+#include <Geode/modify/SecretLayer4.hpp>
 
 // spacemenu includes
 #include "interface/SMMenu.hpp"
@@ -217,3 +218,12 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
+
+class $modify(SecretLayer4){
+	bool init(){
+		if(!SecretLayer4::init()) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
