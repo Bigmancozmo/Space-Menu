@@ -16,3 +16,4 @@
 #define TintTo CCTintTo
 #define Size CCSize
 #define Object CCObject;
+#define Menu CCMenu;
