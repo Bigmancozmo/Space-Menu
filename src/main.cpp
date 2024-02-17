@@ -227,3 +227,12 @@ class $modify(SecretLayer4){
 		return true;
 	}
 };
+
+class $modify(SecretLayer){
+	bool init(){
+		if(!SecretLayer::init()) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
