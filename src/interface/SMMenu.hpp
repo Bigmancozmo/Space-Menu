@@ -145,6 +145,8 @@ SMMenu::SMMenu(){
     layer->setPosition(layer->getPosition() + (screenSize / 2));
     fadeBgLayer->setPosition(fadeBgLayer->getPosition() - (screenSize / 2));
 
+	fadeBgLayer->setZOrder(500);
+
     SMRandomData::meAsLayer = fadeBgLayer;
 	SMRandomData::smPanelLayer = layer;
 }
