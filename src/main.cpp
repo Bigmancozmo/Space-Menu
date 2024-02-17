@@ -50,7 +50,7 @@ void SMButton::onButton(Object* sender){
 void createButton(Layer* layer){
 	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
-	auto menu = CCMenu::create();
+	auto menu = Menu::create();
 	
 	auto btn = CCMenuItemSpriteExtra::create(
 		spr, layer, menu_selector(SMButton::onButton)
