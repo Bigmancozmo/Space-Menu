@@ -8,6 +8,11 @@
 #include <Geode/modify/LevelSelectLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
 #include <Geode/modify/GJGarageLayer.hpp>
+#include <Geode/modify/GJShopLayer.hpp>
+#include <Geode/modify/LevelSearchLayer.hpp>
+#include <Geode/modify/GauntletLayer.hpp>
+#include <Geode/modify/LeaderboardsLayer.hpp>
+#include <Geode/modify/SecretRewardsLayer.hpp>
 
 // spacemenu includes
 #include "interface/SMMenu.hpp"
@@ -160,6 +165,51 @@ class $modify(PauseLayer){
 class $modify(GJGarageLayer){
 	bool init(){
 		if(!GJGarageLayer::init()) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(LevelSearchLayer){
+	bool init(int p0){
+		if(!LevelSearchLayer::init(p0)) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(GJShopLayer){
+	bool init(ShopType p0){
+		if(!GJShopLayer::init(p0)) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(GauntletLayer){
+	bool init(GauntletType p0){
+		if(!GauntletLayer::init(p0)) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(LeaderboardsLayer){
+	bool init(LeaderboardState p0){
+		if(!LeaderboardsLayer::init(p0)) return false;
+		onButtonScene = this;
+		createButton(this);
+		return true;
+	}
+};
+
+class $modify(SecretRewardsLayer){
+	bool init(bool p0){
+		if(!SecretRewardsLayer::init(p0)) return false;
 		onButtonScene = this;
 		createButton(this);
 		return true;
