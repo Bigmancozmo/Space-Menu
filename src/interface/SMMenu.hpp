@@ -19,10 +19,13 @@ public:
 };
 
 Layer* SMMenu::create() {
+    Color4B fadeColor = {0, 0, 0, 102};
+    auto fadeBgLayer = LayerColor::create(fadeColor);
     auto layer = Layer::create();
     auto infoLayer = Layer::create();
     infoLayer->setID("sm-info-layer");
-    layer->setID("spacemenu-ui");
+    layer->setID("spacemenu-panel");
+    fadeBgLayer->setID("spacemenu-ui");
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     layer->setTouchEnabled(true);
@@ -60,8 +63,9 @@ Layer* SMMenu::create() {
     infoLayer->addChild(SM_Logo);
     infoLayer->addChild(creatorText);
     background->addChild(infoLayer);
+    fadeBgLayer->addChild(layer);
 
     layer->setTouchPriority(-1000);
 
-    return layer;
+    return fadeBgLayer;
 }
