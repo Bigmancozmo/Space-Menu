@@ -34,7 +34,7 @@ SMMenu* spaceMenuLayer = nullptr;
 Size screenSize;
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-	#define SHOW_MENU_BUTTON false;
+	#define HIDE_MENU_BUTTON true
 #endif
 
 void SMButton::errorOccuredOpening(const char* error){
@@ -57,7 +57,7 @@ void SMButton::onButton(Object* sender){
 	}
 }
 
-#ifdef SHOW_MENU_BUTTON
+#ifndef HIDE_MENU_BUTTON
 
 void createButton(Layer* layer){
 	screenSize = CCDirector::sharedDirector()->getWinSize();
