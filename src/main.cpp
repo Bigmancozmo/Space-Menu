@@ -58,7 +58,6 @@ void SMButton::onButton(Object* sender){
 }
 
 #ifndef HIDE_MENU_BUTTON
-
 void createButton(Layer* layer){
 	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
@@ -223,5 +222,4 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
-
 #endif
