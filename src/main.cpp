@@ -33,6 +33,10 @@ Layer* onButtonScene = nullptr;
 SMMenu* spaceMenuLayer = nullptr;
 Size screenSize;
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+	#define SHOW_MENU_BUTTON false;
+#endif
+
 void SMButton::errorOccuredOpening(const char* error){
 	stringstream ss;
 	ss << "An error occurred opening SpaceMenu!\n";
@@ -52,6 +56,8 @@ void SMButton::onButton(Object* sender){
 		errorOccuredOpening("<cg>onButtonScene</c> was <cl>nullptr</c>.");
 	}
 }
+
+#ifdef SHOW_MENU_BUTTON
 
 void createButton(Layer* layer){
 	screenSize = CCDirector::sharedDirector()->getWinSize();
@@ -216,4 +222,6 @@ class $modify(LeaderboardsLayer){
 			return true;
 		}
 	};
+#endif
+
 #endif
