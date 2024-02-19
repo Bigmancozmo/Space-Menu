@@ -57,8 +57,8 @@ void SMButton::onButton(Object* sender){
 	}
 }
 
-#ifndef GEODE_IS_WINDOWS
 void createButton(Layer* layer){
+	#ifndef GEODE_IS_WINDOWS
 	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
 	auto menu = Menu::create();
@@ -77,6 +77,7 @@ void createButton(Layer* layer){
 
 	menu->addChild(btn);
 	layer->addChild(menu);
+	#endif
 }
 
 class $modify(MenuLayer) {
@@ -222,7 +223,6 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
-#endif
 
 #ifdef GEODE_IS_WINDOWS
 $execute {
@@ -237,7 +237,9 @@ $execute {
     });
 	
 	new EventListener([=](InvokeBindEvent* event) {
-    	SMButton::onButton(nullptr);
+    	if(!SMRandomData::isOpen){
+			SMButton::onButton(nullptr);
+		}
 	return ListenerResult::Propagate;
     }, InvokeBindFilter(nullptr, "open"_spr));
 }
