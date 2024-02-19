@@ -233,7 +233,7 @@ $execute {
 	BindManager::get()->registerBindable({
         "open-spacemenu"_spr,
         "Open SpaceMenu",
-        "Does what you think it does.",
+        "Does exactly what you think it does.",
         { Keybind::create(KEY_Q, Modifier::None) },
         "SpaceMod/General"
     });
