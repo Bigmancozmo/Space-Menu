@@ -37,10 +37,6 @@ Layer* onButtonScene = nullptr;
 SMMenu* spaceMenuLayer = nullptr;
 Size screenSize;
 
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-	#define HIDE_MENU_BUTTON true
-#endif
-
 void SMButton::errorOccuredOpening(const char* error){
 	stringstream ss;
 	ss << "An error occurred opening SpaceMenu!\n";
@@ -61,7 +57,7 @@ void SMButton::onButton(Object* sender){
 	}
 }
 
-#ifndef HIDE_MENU_BUTTON
+#ifndef GEODE_IS_WINDOWS
 void createButton(Layer* layer){
 	screenSize = CCDirector::sharedDirector()->getWinSize();
 	auto spr = ButtonSprite::create("S");
@@ -226,8 +222,9 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
-#else
+#endif
 
+#ifdef GEODE_IS_WINDOWS
 $execute {
 	cout << "executed" << endl;
 
@@ -241,7 +238,6 @@ $execute {
 	
 	new EventListener([=](InvokeBindEvent* event) {
     	SMButton::onButton(nullptr);
-		cout << "Qd" << endl;
 	return ListenerResult::Propagate;
     }, InvokeBindFilter(nullptr, "open"_spr));
 }
