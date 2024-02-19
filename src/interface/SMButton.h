@@ -8,6 +8,6 @@ using namespace geode::prelude;
 
 class SMButton {
 public:
-    void onButton(CCObject* sender);
-    void errorOccuredOpening(const char* error);
+    static void onButton(CCObject* sender);
+    static void errorOccuredOpening(const char* error);
 };
