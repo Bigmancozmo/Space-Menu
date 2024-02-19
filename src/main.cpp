@@ -242,6 +242,7 @@ $execute {
 	
 	new EventListener([=](InvokeBindEvent* event) {
     	SMButton::onButton(nullptr);
+		cout << "Q'd" << endl;
 	return ListenerResult::Propagate;
     }, InvokeBindFilter(nullptr, "open"));
 }
