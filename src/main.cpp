@@ -231,7 +231,7 @@ class $modify(LeaderboardsLayer){
 #ifdef HIDE_MENU_BUTTON
 $execute {
 	BindManager::get()->registerBindable({
-        "open-spacemenu"_spr,
+        "open"_spr,
         "Open SpaceMenu",
         "Does exactly what you think it does.",
         { Keybind::create(KEY_Q, Modifier::None) },
