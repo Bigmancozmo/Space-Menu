@@ -237,5 +237,10 @@ $execute {
         { Keybind::create(KEY_Q, Modifier::None) },
         "SpaceMod/General"
     });
+	
+	new EventListener([=](InvokeBindEvent* event) {
+    	SMButton::onButton(nullptr);
+	return ListenerResult::Propagate;
+    }, InvokeBindFilter(nullptr, "open"));
 }
 #endif
