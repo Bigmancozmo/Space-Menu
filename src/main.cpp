@@ -228,10 +228,8 @@ class $modify(LeaderboardsLayer){
 #endif
 #else
 
-cout << "$WA" << endl;
-
 $execute {
-	cout << "$executed" << endl;
+	cout << "executed" << endl;
 
 	BindManager::get()->registerBindable({
         "open"_spr,
@@ -243,7 +241,7 @@ $execute {
 	
 	new EventListener([=](InvokeBindEvent* event) {
     	SMButton::onButton(nullptr);
-		cout << "Q'd" << endl;
+		cout << "Qd" << endl;
 	return ListenerResult::Propagate;
     }, InvokeBindFilter(nullptr, "open"));
 }
