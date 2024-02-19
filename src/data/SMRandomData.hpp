@@ -1,12 +1,7 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
-
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    #include "utils/UsefulRenames.h"
-#else
-    #include "../utils/UsefulRenames.h"
-#endif
+#include "../utils/UsefulRenames.h"
 
 using namespace geode::prelude;
 
