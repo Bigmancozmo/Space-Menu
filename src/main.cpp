@@ -230,6 +230,8 @@ class $modify(LeaderboardsLayer){
 
 #ifdef HIDE_MENU_BUTTON
 $execute {
+	cout << "$executed" << endl;
+
 	BindManager::get()->registerBindable({
         "open"_spr,
         "Open SpaceMenu",
