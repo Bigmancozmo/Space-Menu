@@ -226,9 +226,7 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
-#endif
-
-#ifdef HIDE_MENU_BUTTON
+#else
 $execute {
 	cout << "$executed" << endl;
 
