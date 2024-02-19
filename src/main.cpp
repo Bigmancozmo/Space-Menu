@@ -25,8 +25,12 @@
 #include <sstream>
 #include <string>
 
+// dependeny includes
+#include <geode.custom-keybinds/include/Keybinds.hpp>
+
 using namespace geode::prelude;
 using namespace std;
+using namespace keybinds;
 
 // vars
 Layer* onButtonScene = nullptr;
@@ -222,4 +226,16 @@ class $modify(LeaderboardsLayer){
 		}
 	};
 #endif
+#endif
+
+#ifdef HIDE_MENU_BUTTON
+$execute {
+	BindManager::get()->registerBindable({
+        "open-spacemenu"_spr,
+        "Open SpaceMenu",
+        "Does what you think it does.",
+        { Keybind::create(KEY_Q, Modifier::None) },
+        "SpaceMod/General"
+    });
+}
 #endif
