@@ -243,6 +243,6 @@ $execute {
     	SMButton::onButton(nullptr);
 		cout << "Qd" << endl;
 	return ListenerResult::Propagate;
-    }, InvokeBindFilter(nullptr, "open"));
+    }, InvokeBindFilter(nullptr, "open"_spr));
 }
 #endif
