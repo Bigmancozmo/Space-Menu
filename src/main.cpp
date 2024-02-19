@@ -227,6 +227,9 @@ class $modify(LeaderboardsLayer){
 	};
 #endif
 #else
+
+cout << "$WA" << endl;
+
 $execute {
 	cout << "$executed" << endl;
 
@@ -235,7 +238,7 @@ $execute {
         "Open SpaceMenu",
         "Does exactly what you think it does.",
         { Keybind::create(KEY_Q, Modifier::None) },
-        "SpaceMod/General"
+        "SpaceMenu/General"
     });
 	
 	new EventListener([=](InvokeBindEvent* event) {
