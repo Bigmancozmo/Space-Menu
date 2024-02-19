@@ -226,13 +226,11 @@ class $modify(LeaderboardsLayer){
 
 #ifdef GEODE_IS_WINDOWS
 $execute {
-	cout << "executed" << endl;
-
 	BindManager::get()->registerBindable({
         "open"_spr,
         "Open SpaceMenu",
         "Does exactly what you think it does.",
-        { Keybind::create(KEY_Q, Modifier::None) },
+        { Keybind::create(KEY_RightShift, Modifier::None) },
         "SpaceMenu/General"
     });
 	
@@ -240,6 +238,7 @@ $execute {
     	if(!SMRandomData::isOpen){
 			SMButton::onButton(nullptr);
 		}
+		SMRandomData::isOpen = true;
 	return ListenerResult::Propagate;
     }, InvokeBindFilter(nullptr, "open"_spr));
 }
