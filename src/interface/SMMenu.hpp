@@ -61,7 +61,7 @@ void SMMenu::toggleMenu(){
 void SMMenu::closeMenu(){
     SMRandomData::meAsLayer->removeFromParent();
 	SMRandomData::meAsLayer = nullptr;
-	SMRandomData::isOpen = true;
+	SMRandomData::isOpen = false;
     //SMRandomData::meAsLayer->setVisible(false);
     //SMRandomData::smPanelLayer->setTouchPriority(0);
 	//cout << "TP = 0" << endl;
