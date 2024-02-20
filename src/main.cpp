@@ -230,7 +230,7 @@ $execute {
         "open"_spr,
         "Open SpaceMenu",
         "Does exactly what you think it does.",
-        { Keybind::create(KEY_RightShift, Modifier::None) },
+        { Keybind::create(KEY_H, Modifier::None) },
         "SpaceMenu/General"
     });
 	
