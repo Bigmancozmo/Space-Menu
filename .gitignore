@@ -57,3 +57,6 @@ build-*/
 old-logo.png
 icon.fla
 TODO.txt
+.vs
+*.kra
+*.fla

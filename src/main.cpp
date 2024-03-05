@@ -23,6 +23,6 @@ class $modify(SMButton, MenuLayer){
     }
 
     void onButton(CCObject*){
-        FLAlertLayer::create("Space Menu", "What are we setting up Cameron?", "OK")->show();
+        FLAlertLayer::create("Space Menu", "What are we setting up Cameron Cameron?", "OK")->show();
     }
 };
