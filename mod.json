@@ -8,7 +8,8 @@
 	"description": "",
 	"resources": {
         "sprites": [
-            "res/SM_FullLogo.png"
+            "res/SM_FullLogo.png",
+			"res/SM_Button.png"
         ]
     },
 	"dependencies": [
