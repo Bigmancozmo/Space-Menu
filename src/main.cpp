@@ -4,9 +4,6 @@
 using namespace geode::prelude;
 
 class $modify(SMButton, MenuLayer){
-    void onButton(CCObject*){
-        FLAlertLayer::create("Space Menu", "What are we setting up Cameron?", "OK");
-    }
 
     bool init(){
         if(!MenuLayer::init()) return false;
@@ -19,6 +16,13 @@ class $modify(SMButton, MenuLayer){
 
         spaceMenu->addChild(sm_button);
         this->addChild(spaceMenu);
+
+        SceneManager::get()->keepAcrossScenes(spaceMenu);
+
         return true;
+    }
+
+    void onButton(CCObject*){
+        FLAlertLayer::create("Space Menu", "What are we setting up Cameron?", "OK")->show();
     }
 };
