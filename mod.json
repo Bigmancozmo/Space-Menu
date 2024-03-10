@@ -11,10 +11,8 @@
 	"description": "",
 	"resources": {
 		"spritesheets": {
-			"LogoSheet": [
-				"res/logos/*.png"
-			],
-			"HeartSheet": [
+			"SM_Sheet": [
+				"res/logos/*.png",
 				"res/hearts/*.png"
 			]
 		}
