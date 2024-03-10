@@ -13,6 +13,9 @@
 		"spritesheets": {
 			"LogoSheet": [
 				"res/logos/*.png"
+			],
+			"HeartSheet": [
+				"res/hearts/*.png"
 			]
 		}
 	},
