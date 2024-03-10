@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>spritesheet0000</key>
+			<key>SM_Logo.png</key>
 			<dict>
 				<key>aliases</key>
 				<array/>
@@ -23,7 +23,7 @@
 				<key>textureRotated</key>
 				<false/>
 			</dict>
-			<key>spritesheet0001</key>
+			<key>SM_Button.png</key>
 			<dict>
 				<key>aliases</key>
 				<array/>
@@ -42,7 +42,7 @@
 				<key>textureRotated</key>
 				<false/>
 			</dict>
-			<key>spritesheet0002</key>
+			<key>SM_FullLogo.png</key>
 			<dict>
 				<key>aliases</key>
 				<array/>
