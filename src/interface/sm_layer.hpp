@@ -26,7 +26,7 @@ bool SMLayer::init() {
     if (buttonExists) return true;
 
     CCMenu* spaceMenu = CCMenu::create();
-    CCSprite* sprite = CCSprite::create("SM_Button.png"_spr);
+    CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
     CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
         sprite, this, menu_selector(SMLayer::onButton)
     );
