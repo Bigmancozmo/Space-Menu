@@ -2,6 +2,7 @@
 
 #include <Geode/Geode.hpp>
 #include <iostream>
+#include "mod_menu.hpp"
 
 using namespace geode::prelude;
 using namespace std;
