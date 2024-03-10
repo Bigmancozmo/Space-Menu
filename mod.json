@@ -11,8 +11,8 @@
 	"description": "",
 	"resources": {
 		"spritesheets": {
-			"MainSheets": [
-				"res/sheets/*.png"
+			"LogoSheet": [
+				"res/logos/*.png"
 			]
 		}
 	},
