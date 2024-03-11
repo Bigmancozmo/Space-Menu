@@ -18,6 +18,9 @@ public:
 private:
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
     CCScale9Sprite* background;
+    void showNoAnim();
+    void openAnim();
+    void onCloseButton(CCObject*);
 };
 
 bool SpaceMenu::init() {
@@ -36,9 +39,14 @@ bool SpaceMenu::init() {
     background->setContentSize(panelSize);
     background->setID("sm-background");
 
+    CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+    CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
+        closeBtnSprite, menu, menu_selector(SpaceMenu::onCloseButton)
+    );
+
     // former mess :)
     // (look in commit history for context)
-    this->show();
+    this->showNoAnim();
 
     // add children
     this->addChild(backgroundFade);
@@ -69,6 +77,8 @@ bool SpaceMenu::init() {
     }, "close-spacemenu"_spr);
 #endif
 
+    this->openAnim();
+
     return true;
 }
 
@@ -76,6 +86,18 @@ SpaceMenu* SpaceMenu::create() {
     SpaceMenu* me = new SpaceMenu();
     me->init();
     return me;
+}
+
+void SpaceMenu::openAnim()
+{
+    auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
+    auto eased = CCEaseElasticOut::create(moveToAction);
+    background->runAction(eased);
+}
+
+inline void SpaceMenu::onCloseButton(CCObject*)
+{
+    this->hide();
 }
 
 void SpaceMenu::show()
@@ -89,9 +111,19 @@ void SpaceMenu::show()
     this->setKeypadEnabled(true);
     touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 
-    auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
-    auto eased = CCEaseElasticOut::create(moveToAction);
-    background->runAction(eased);
+    this->openAnim();
+}
+
+void SpaceMenu::showNoAnim()
+{
+    visible = true;
+    auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
+    this->setTouchEnabled(true);
+    this->setVisible(true);
+    this->setTouchMode(kCCTouchesOneByOne);
+    this->setMouseEnabled(true);
+    this->setKeypadEnabled(true);
+    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 }
 
 void SpaceMenu::hide()

@@ -68,4 +68,3 @@ SMLayer* SMLayer::create() {
     me->init();
     return me;
 }
-
