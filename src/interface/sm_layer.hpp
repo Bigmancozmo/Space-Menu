@@ -12,19 +12,15 @@ public:
     virtual bool init();
     static SMLayer* create();
     void onButton(CCObject* obj) {
-        FLAlertLayer::create("Space Menu", "What are we setting up Cameron Cameron?", "OK")->show();
+        SpaceMenu* menu = SpaceMenu::create();
+        this->addChild(menu);
     };
-
-private:
-    bool buttonExists;
 };
 
 bool SMLayer::init() {
     if (!CCLayer::init()) {
         return false;
     }
-
-    if (buttonExists) return true;
 
     CCMenu* spaceMenu = CCMenu::create();
     CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
@@ -42,8 +38,6 @@ bool SMLayer::init() {
     spaceMenu->setID("SMButtonMenu");
     this->addChild(spaceMenu);
     this->setID("SMLayer");
-
-    buttonExists = true;
 
     return true;
 }
