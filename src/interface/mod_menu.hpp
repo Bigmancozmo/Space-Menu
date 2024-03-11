@@ -34,13 +34,9 @@ bool SpaceMenu::init() {
     background->setContentSize(panelSize);
     background->setID("sm-background");
 
-    // the mess
-    auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-    this->setTouchEnabled(true);
-    this->setTouchMode(kCCTouchesOneByOne);
-    this->setMouseEnabled(true);
-    this->setKeypadEnabled(true);
-    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
+    // former mess :)
+    // (look in commit history for context)
+    this->show();
 
     // add children
     this->addChild(backgroundFade);
@@ -58,7 +54,7 @@ bool SpaceMenu::init() {
         if (event->isDown()) {
             this->hide();
         }
-        return ListenerResult::Stop;
+        
     }, "close-spacemenu"_spr);
 #endif
 
@@ -73,15 +69,18 @@ SpaceMenu* SpaceMenu::create() {
 
 void SpaceMenu::show()
 {
-    this->setVisible(true);
+    visible = true;
+    auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
     this->setTouchMode(kCCTouchesOneByOne);
     this->setMouseEnabled(true);
     this->setKeypadEnabled(true);
+    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 }
 
 void SpaceMenu::hide()
 {
+    visible = false;
     this->setVisible(false);
     this->setTouchEnabled(false);
     this->setMouseEnabled(false);
