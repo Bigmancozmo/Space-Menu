@@ -1,4 +1,4 @@
-# <img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/res/SM_FullLogo.png" alt="SpaceMenu Logo With Name">
+# <img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/res/logos/SM_FullLogo.png" alt="SpaceMenu Logo With Name">
 
 <div align=center>
   <span>
