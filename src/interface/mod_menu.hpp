@@ -74,11 +74,18 @@ SpaceMenu* SpaceMenu::create() {
 void SpaceMenu::show()
 {
     this->setVisible(true);
+    this->setTouchEnabled(true);
+    this->setTouchMode(kCCTouchesOneByOne);
+    this->setMouseEnabled(true);
+    this->setKeypadEnabled(true);
 }
 
 void SpaceMenu::hide()
 {
     this->setVisible(false);
+    this->setTouchEnabled(false);
+    this->setMouseEnabled(false);
+    this->setKeypadEnabled(false);
 }
 
 #ifdef GEODE_IS_WINDOWS
