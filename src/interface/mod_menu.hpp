@@ -51,10 +51,16 @@ bool SpaceMenu::init() {
     // keybinds
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
+        bool oldVisibility = visible;
         if (event->isDown()) {
             this->hide();
         }
         
+        if (oldVisibility) {
+            return ListenerResult::Stop;
+        }
+        return ListenerResult::Propagate;
+
     }, "close-spacemenu"_spr);
 #endif
 
