@@ -97,7 +97,7 @@ $execute {
         "open-spacemenu"_spr,
         "Open SpaceMenu",
         "",
-        { Keybind::create(KEY_OEMPeriod, Modifier::None) },
+        { Keybind::create(KEY_RightShift, Modifier::None) },
         "SpaceMenu/Menu Keybinds"
     });
 }
