@@ -69,24 +69,3 @@ SMLayer* SMLayer::create() {
     return me;
 }
 
-#ifdef GEODE_IS_WINDOWS
-$execute{
-    using namespace keybinds;
-
-    BindManager::get()->registerBindable({
-        "close-spacemenu"_spr,
-        "Close SpaceMenu",
-        "",
-        { Keybind::create(KEY_Escape, Modifier::None) },
-        "SpaceMenu/Menu Keybinds"
-    });
-
-    BindManager::get()->registerBindable({
-        "open-spacemenu"_spr,
-        "Open SpaceMenu",
-        "",
-        { Keybind::create(KEY_RightShift, Modifier::None) },
-        "SpaceMenu/Menu Keybinds"
-    });
-}
-#endif
