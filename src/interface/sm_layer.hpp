@@ -3,9 +3,11 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include "mod_menu.hpp"
+#include <geode.custom-keybinds/include/Keybinds.hpp>
 
 using namespace geode::prelude;
 using namespace std;
+using namespace keybinds;
 
 class SMLayer : public CCLayer {
 public:
@@ -51,9 +53,10 @@ bool SMLayer::init() {
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
         if (event->isDown()) {
+            cout << "open SM" << endl;
             SMLayer::onButton(nullptr);
         }
-        return ListenerResult::Stop;
+        return ListenerResult::Propagate;
         }, "open-spacemenu"_spr);
 #endif
 
@@ -65,3 +68,25 @@ SMLayer* SMLayer::create() {
     me->init();
     return me;
 }
+
+#ifdef GEODE_IS_WINDOWS
+$execute{
+    using namespace keybinds;
+
+    BindManager::get()->registerBindable({
+        "close-spacemenu"_spr,
+        "Close SpaceMenu",
+        "",
+        { Keybind::create(KEY_Escape, Modifier::None) },
+        "SpaceMenu/Menu Keybinds"
+    });
+
+    BindManager::get()->registerBindable({
+        "open-spacemenu"_spr,
+        "Open SpaceMenu",
+        "",
+        { Keybind::create(KEY_RightShift, Modifier::None) },
+        "SpaceMenu/Menu Keybinds"
+    });
+}
+#endif
