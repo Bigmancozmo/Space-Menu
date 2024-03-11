@@ -52,7 +52,7 @@ bool SpaceMenu::init() {
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
 
-    // keybinds... my favorite... yay...
+    // keybinds
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
         if (event->isDown()) {
