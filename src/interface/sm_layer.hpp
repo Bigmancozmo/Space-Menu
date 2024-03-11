@@ -48,6 +48,15 @@ bool SMLayer::init() {
     this->addChild(spaceMenu);
     this->setID("SMLayer");
 
+#ifdef GEODE_IS_WINDOWS
+    this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
+        if (event->isDown()) {
+            SMLayer::onButton(nullptr);
+        }
+        return ListenerResult::Stop;
+        }, "open-spacemenu"_spr);
+#endif
+
     return true;
 }
 
