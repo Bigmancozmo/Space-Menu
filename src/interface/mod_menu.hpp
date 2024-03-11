@@ -14,7 +14,11 @@ public:
     static SpaceMenu* create();
     void show();
     void hide();
-    bool visible;
+    bool visible = false;
+private:
+    CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+    CCMoveTo* moveToAction = CCMoveTo::create(1, screenSize / 2);
+    CCMenu* menu;
 };
 
 bool SpaceMenu::init() {
@@ -22,13 +26,12 @@ bool SpaceMenu::init() {
         cout << "life is sad, spacemenu didnt init" << endl;
         return false;
     }
-
-    auto screenSize = CCDirector::sharedDirector()->getWinSize();
+    
     CCPoint panelSize = screenSize - CCPoint(50, 50);
 
     ccColor4B fadeColor = ccColor4B(0.0f, 0.0f, 0.0f, 150.0f);
     CCLayerColor* backgroundFade = CCLayerColor::create(fadeColor);
-    CCMenu* menu = CCMenu::create();
+    menu = CCMenu::create();
 
     auto background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
@@ -44,7 +47,7 @@ bool SpaceMenu::init() {
     this->addChild(menu);
     menu->setZOrder(500);
     menu->addChild(background);
-    menu->setPosition(screenSize / 2);
+    menu->setPosition(CCPoint(screenSize.width / 2, screenSize.height));
 
     // more mess
     this->setTouchPriority(-200);
@@ -85,6 +88,8 @@ void SpaceMenu::show()
     this->setMouseEnabled(true);
     this->setKeypadEnabled(true);
     touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
+
+    menu->runAction(moveToAction);
 }
 
 void SpaceMenu::hide()
@@ -94,4 +99,7 @@ void SpaceMenu::hide()
     this->setTouchEnabled(false);
     this->setMouseEnabled(false);
     this->setKeypadEnabled(false);
+
+    menu->stopAction(moveToAction);
+    menu->setPosition(CCPoint(screenSize.width / 2, screenSize.height));
 }
