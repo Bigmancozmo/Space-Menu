@@ -43,6 +43,7 @@ bool SpaceMenu::init() {
     menu->setPosition(CCPoint(0.0f, 0.0f));
     this->addChild(menu);
     menu->setZOrder(500);
+    menu->addChild(background);
 
     // more mess
     this->setTouchPriority(-200);
@@ -78,6 +79,7 @@ void SpaceMenu::show()
     visible = true;
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
+    this->setVisible(true);
     this->setTouchMode(kCCTouchesOneByOne);
     this->setMouseEnabled(true);
     this->setKeypadEnabled(true);
