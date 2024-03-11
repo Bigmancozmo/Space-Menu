@@ -44,6 +44,7 @@ bool SpaceMenu::init() {
     this->addChild(menu);
     menu->setZOrder(500);
     menu->addChild(background);
+    menu->setPosition(screenSize / 2);
 
     // more mess
     this->setTouchPriority(-200);
