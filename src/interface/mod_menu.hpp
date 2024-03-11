@@ -66,6 +66,7 @@ SpaceMenu* SpaceMenu::create() {
     return me;
 }
 
+#ifdef GEODE_IS_WINDOWS
 $execute {
     using namespace keybinds;
 
@@ -83,5 +84,6 @@ $execute {
         "",
         { Keybind::create(KEY_OEMPeriod, Modifier::None) },
         "SpaceMenu/Menu Keybinds"
-        });
+    });
 }
+#endif
