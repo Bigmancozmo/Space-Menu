@@ -19,7 +19,7 @@ public:
 
 bool SpaceMenu::init() {
     if (!CCLayer::init()) {
-        cout << "life is sad" << endl;
+        cout << "life is sad, spacemenu didnt init" << endl;
         return false;
     }
 
