@@ -12,6 +12,9 @@ class SpaceMenu : public CCLayer {
 public:
     virtual bool init();
     static SpaceMenu* create();
+    void show();
+    void hide();
+    bool visible;
 };
 
 bool SpaceMenu::init() {
@@ -53,7 +56,7 @@ bool SpaceMenu::init() {
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
         if (event->isDown()) {
-            cout << "escape" << endl;
+            this->hide();
         }
         return ListenerResult::Propagate;
     }, "close-spacemenu"_spr);
@@ -66,6 +69,16 @@ SpaceMenu* SpaceMenu::create() {
     SpaceMenu* me = new SpaceMenu();
     me->init();
     return me;
+}
+
+void SpaceMenu::show()
+{
+    this->setVisible(true);
+}
+
+void SpaceMenu::hide()
+{
+    this->setVisible(false);
 }
 
 #ifdef GEODE_IS_WINDOWS

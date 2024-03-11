@@ -12,9 +12,18 @@ public:
     virtual bool init();
     static SMLayer* create();
     void onButton(CCObject* obj) {
-        SpaceMenu* menu = SpaceMenu::create();
-        this->addChild(menu);
+        if (menuWasCreated) {
+            menu->show();
+        }
+        else {
+            menu = SpaceMenu::create();
+            this->addChild(menu);
+        }
+        menuWasCreated = true;
     };
+private:
+    bool menuWasCreated = false;
+    SpaceMenu* menu;
 };
 
 bool SMLayer::init() {
