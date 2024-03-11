@@ -58,7 +58,7 @@ bool SpaceMenu::init() {
         if (event->isDown()) {
             this->hide();
         }
-        return ListenerResult::Propagate;
+        return ListenerResult::Stop;
     }, "close-spacemenu"_spr);
 
     return true;
