@@ -17,7 +17,6 @@ public:
     bool visible = false;
 private:
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-    CCMoveTo* moveToAction = CCMoveTo::create(1, screenSize / 2);
     CCScale9Sprite* background;
 };
 
@@ -39,6 +38,7 @@ bool SpaceMenu::init() {
 
     // former mess :)
     // (look in commit history for context)
+    this->show();
 
     // add children
     this->addChild(backgroundFade);
@@ -47,7 +47,7 @@ bool SpaceMenu::init() {
     menu->setZOrder(500);
     menu->addChild(background);
     menu->setPosition(screenSize / 2);
-    background->setPosition(CCPoint(screenSize.width / 2, screenSize.height));
+    background->setPosition(CCPoint(0, screenSize.height));
 
     // more mess
     this->setTouchPriority(-200);
@@ -69,7 +69,6 @@ bool SpaceMenu::init() {
     }, "close-spacemenu"_spr);
 #endif
 
-    this->show();
     return true;
 }
 
@@ -90,7 +89,9 @@ void SpaceMenu::show()
     this->setKeypadEnabled(true);
     touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
 
-    background->runAction(moveToAction);
+    auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
+    auto eased = CCEaseElasticOut::create(moveToAction);
+    background->runAction(eased);
 }
 
 void SpaceMenu::hide()
@@ -101,6 +102,5 @@ void SpaceMenu::hide()
     this->setMouseEnabled(false);
     this->setKeypadEnabled(false);
 
-    background->stopAction(moveToAction);
-    background->setPosition(CCPoint(screenSize.width / 2, screenSize.height));
+    background->setPosition(CCPoint(0, screenSize.height));
 }
