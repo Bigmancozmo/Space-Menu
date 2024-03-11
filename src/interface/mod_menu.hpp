@@ -40,7 +40,7 @@ bool SpaceMenu::init() {
     background->setID("sm-background");
 
     CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
-    CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
+    CCMenuItemSpriteExtra* closeBtn = CCMenuItemSpriteExtra::create(
         closeBtnSprite, menu, menu_selector(SpaceMenu::onCloseButton)
     );
 
@@ -56,6 +56,7 @@ bool SpaceMenu::init() {
     menu->addChild(background);
     menu->setPosition(screenSize / 2);
     background->setPosition(CCPoint(0, screenSize.height));
+    menu->addChild(closeBtn);
 
     // more mess
     this->setTouchPriority(-200);
@@ -90,6 +91,7 @@ SpaceMenu* SpaceMenu::create() {
 
 void SpaceMenu::openAnim()
 {
+    background->setPosition(CCPoint(0, screenSize.height));
     auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
     auto eased = CCEaseElasticOut::create(moveToAction);
     background->runAction(eased);
@@ -133,6 +135,4 @@ void SpaceMenu::hide()
     this->setTouchEnabled(false);
     this->setMouseEnabled(false);
     this->setKeypadEnabled(false);
-
-    background->setPosition(CCPoint(0, screenSize.height));
 }
