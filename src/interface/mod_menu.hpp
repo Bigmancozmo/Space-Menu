@@ -60,9 +60,8 @@ bool SpaceMenu::init() {
         }
         return ListenerResult::Stop;
     }, "close-spacemenu"_spr);
-
-    return true;
 #endif
+    return true;
 }
 
 SpaceMenu* SpaceMenu::create() {
