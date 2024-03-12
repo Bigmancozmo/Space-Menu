@@ -12,6 +12,18 @@ class $modify(MenuLayer){
 
     bool init() {
         if (!MenuLayer::init()) return false;
+
+        // this works i swear
+        if (!Mod::get()->setSavedValue("has-seen-intro-popup", true)) {
+            auto wall = FLAlertLayer::create(
+                "SpaceMenu",
+                "Welcome to SpaceMenu!\n<cb>Use the Page Down key, or press the button, to begin.</c>",
+                "OK"
+            );
+            wall->m_scene = this;
+            wall->show();
+        }
+
         if (buttonExists) return true;
 
         auto layer = SMLayer::create();
@@ -42,7 +54,7 @@ $execute{
         "open-spacemenu"_spr,
         "Open SpaceMenu",
         "",
-        { Keybind::create(KEY_OEMPeriod, Modifier::None) },
+        { Keybind::create(KEY_PageDown, Modifier::None) },
         "SpaceMenu/Menu Keybinds"
     });
 }
