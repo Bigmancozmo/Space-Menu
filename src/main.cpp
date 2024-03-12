@@ -23,7 +23,6 @@ class $modify(MenuLayer){
             );
             popup->m_scene = this;
             popup->show();
-            SceneManager::get()->keepAcrossScenes(popup);
         }
 
         if (buttonExists) return true;
