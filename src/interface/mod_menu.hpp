@@ -62,6 +62,13 @@ bool SpaceMenu::init() {
     background->setPosition(CCPoint(0, screenSize.height));
     bgMenu->addChild(closeBtn);
 
+    auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
+    this->setTouchEnabled(true);
+    this->setVisible(true);
+    this->setTouchMode(kCCTouchesOneByOne);
+    this->setMouseEnabled(true);
+    this->setKeypadEnabled(true);
+    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 25);
 
     // more mess
     this->setTouchPriority(-200);
