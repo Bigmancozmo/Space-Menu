@@ -13,7 +13,7 @@ public:
     virtual bool init();
     static SpaceMenu* create();
     void show();
-    void hide();
+    void hide(CCObject*);
     bool visible = false;
 private:
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
@@ -21,6 +21,7 @@ private:
     void showNoAnim();
     void openAnim();
     void onCloseButton(CCObject*);
+    SpaceMenu* meImCool;
 };
 
 bool SpaceMenu::init() {
@@ -39,9 +40,12 @@ bool SpaceMenu::init() {
     background->setContentSize(panelSize);
     background->setID("sm-background");
 
+    auto bgMenu = CCMenu::create();
+    background->addChild(bgMenu);
+
     CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
     CCMenuItemSpriteExtra* closeBtn = CCMenuItemSpriteExtra::create(
-        closeBtnSprite, menu, menu_selector(SpaceMenu::onCloseButton)
+        closeBtnSprite, bgMenu, menu_selector(SpaceMenu::hide)
     );
 
     // former mess :)
@@ -56,18 +60,22 @@ bool SpaceMenu::init() {
     menu->addChild(background);
     menu->setPosition(screenSize / 2);
     background->setPosition(CCPoint(0, screenSize.height));
-    menu->addChild(closeBtn);
+    bgMenu->addChild(closeBtn);
+
 
     // more mess
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
+    bgMenu->setTouchPriority(-299);
+
+    meImCool = this;
 
     // keybinds
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
         bool oldVisibility = visible;
         if (event->isDown()) {
-            this->hide();
+            this->hide(nullptr);
         }
         
         if (oldVisibility) {
@@ -97,9 +105,13 @@ void SpaceMenu::openAnim()
     background->runAction(eased);
 }
 
-inline void SpaceMenu::onCloseButton(CCObject*)
+void SpaceMenu::onCloseButton(CCObject*)
 {
-    this->hide();
+    visible = false;
+    meImCool->setVisible(false);
+    meImCool->setTouchEnabled(false);
+    meImCool->setMouseEnabled(false);
+    meImCool->setKeypadEnabled(false);
 }
 
 void SpaceMenu::show()
@@ -111,7 +123,7 @@ void SpaceMenu::show()
     this->setTouchMode(kCCTouchesOneByOne);
     this->setMouseEnabled(true);
     this->setKeypadEnabled(true);
-    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
+    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 25);
 
     this->openAnim();
 }
@@ -125,11 +137,12 @@ void SpaceMenu::showNoAnim()
     this->setTouchMode(kCCTouchesOneByOne);
     this->setMouseEnabled(true);
     this->setKeypadEnabled(true);
-    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 2);
+    touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 25);
 }
 
-void SpaceMenu::hide()
+void SpaceMenu::hide(CCObject*)
 {
+    //background->setPosition(CCPoint(0, screenSize.height));
     visible = false;
     this->setVisible(false);
     this->setTouchEnabled(false);
