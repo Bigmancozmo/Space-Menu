@@ -15,7 +15,7 @@ class $modify(MenuLayer){
 
         // this works i swear
         if (!Mod::get()->setSavedValue("has-seen-intro-popup", true)) {
-            auto wall = FLAlertLayer::create(
+            FLAlertLayer* wall = FLAlertLayer::create(
                 "SpaceMenu",
                 "Welcome to SpaceMenu!\n<cb>Use the Page Down key or press the button.</c>",
                 "OK"
