@@ -14,7 +14,6 @@ class $modify(MenuLayer){
         if (!MenuLayer::init()) return false;
 
         // this works i swear
-        Mod::get()->setSavedValue("seen-intro-popup", false);
         if (!Mod::get()->setSavedValue("seen-intro-popup", true)) {
             FLAlertLayer* popup = FLAlertLayer::create(
                 "SpaceMenu",
