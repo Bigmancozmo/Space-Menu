@@ -46,8 +46,8 @@ bool SMLayer::init() {
     sprite->setPosition(CCPoint(0.0f, 0.0f));
     sm_button->setContentSize(CCSize(128.0f * buttonSize, 128.0f * buttonSize));
 
-    sm_button->setPositionY(screenSize.height - 141.5f);
-    sm_button->setPositionX(screenSize.width / -2);
+    sm_button->setPositionY(screenSize.height / 2 - 18.5f);
+    sm_button->setPositionX(screenSize.width / -2 + 57);
 
     spaceMenu->addChild(sm_button);
     spaceMenu->setID("SMButtonMenu");
