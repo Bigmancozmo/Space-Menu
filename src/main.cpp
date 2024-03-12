@@ -16,13 +16,13 @@ class $modify(MenuLayer){
         // this works i swear
         Mod::get()->setSavedValue("has-seen-intro-popup", false);
         if (!Mod::get()->setSavedValue("has-seen-intro-popup", true)) {
-            FLAlertLayer* wall = FLAlertLayer::create(
+            FLAlertLayer* popup = FLAlertLayer::create(
                 "SpaceMenu",
                 "Welcome to SpaceMenu!\n<cb>Use the Page Down key or press the button.</c>",
                 "OK"
             );
-            wall->m_scene = this;
-            wall->show();
+            popup->m_scene = this;
+            popup->show();
         }
 
         if (buttonExists) return true;
