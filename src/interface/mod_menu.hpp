@@ -45,7 +45,7 @@ bool SpaceMenu::init() {
 
     CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
     CCMenuItemSpriteExtra* closeBtn = CCMenuItemSpriteExtra::create(
-        closeBtnSprite, bgMenu, menu_selector(SpaceMenu::hide)
+        closeBtnSprite, bgMenu, menu_selector(SpaceMenu::onCloseButton)
     );
 
     // former mess :)
@@ -107,11 +107,13 @@ void SpaceMenu::openAnim()
 
 void SpaceMenu::onCloseButton(CCObject*)
 {
-    visible = false;
+    /*visible = false;
     meImCool->setVisible(false);
     meImCool->setTouchEnabled(false);
     meImCool->setMouseEnabled(false);
     meImCool->setKeypadEnabled(false);
+    */
+    InvokeBindEvent("close-spacemenu"_spr, true).post();
 }
 
 void SpaceMenu::show()
@@ -142,10 +144,10 @@ void SpaceMenu::showNoAnim()
 
 void SpaceMenu::hide(CCObject*)
 {
-    //background->setPosition(CCPoint(0, screenSize.height));
     visible = false;
     this->setVisible(false);
     this->setTouchEnabled(false);
     this->setMouseEnabled(false);
     this->setKeypadEnabled(false);
+    background->setPosition(CCPoint(0, screenSize.height));
 }
