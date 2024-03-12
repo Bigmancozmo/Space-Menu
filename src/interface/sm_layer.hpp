@@ -32,6 +32,7 @@ bool SMLayer::init() {
     if (!CCLayer::init()) {
         return false;
     }
+    CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 
     CCMenu* spaceMenu = CCMenu::create();
     CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
@@ -44,6 +45,9 @@ bool SMLayer::init() {
     sprite->setAnchorPoint(CCPoint(0.0f, 0.0f));
     sprite->setPosition(CCPoint(0.0f, 0.0f));
     sm_button->setContentSize(CCSize(128.0f * buttonSize, 128.0f * buttonSize));
+
+    sm_button->setPositionY(screenSize.height - 141.5f);
+    sm_button->setPositionX(screenSize.width / -2);
 
     spaceMenu->addChild(sm_button);
     spaceMenu->setID("SMButtonMenu");
