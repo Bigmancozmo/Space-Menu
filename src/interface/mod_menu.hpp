@@ -73,7 +73,7 @@ bool SpaceMenu::init() {
     // more mess
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
-    bgMenu->setTouchPriority(-299);
+    bgMenu->setTouchPriority(-999);
 
     meImCool = this;
 
