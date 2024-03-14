@@ -148,5 +148,3 @@ void SpaceMenu::hide(CCObject*)
     this->setKeypadEnabled(false);
     background->setPosition(CCPoint(0, screenSize.height));
 }
-
-// you
