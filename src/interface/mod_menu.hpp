@@ -46,6 +46,9 @@ bool SpaceMenu::init() {
     CCMenuItemSpriteExtra* closeBtn = CCMenuItemSpriteExtra::create(
         closeBtnSprite, bgMenu, menu_selector(SpaceMenu::onCloseButton)
     );
+    closeBtn->setAnchorPoint(CCPoint(0.5f, 0.5f));
+    closeBtn->setPositionX(-(panelSize.x / 2) + 20.6f);
+    closeBtn->setPositionY((panelSize.y / 3.17f) - 19.0f);
 
     this->showNoAnim();
 
