@@ -26,7 +26,6 @@ private:
 
 bool SpaceMenu::init() {
     if (!CCLayer::init()) {
-        cout << "life is sad, spacemenu didnt init" << endl;
         return false;
     }
     
@@ -48,8 +47,6 @@ bool SpaceMenu::init() {
         closeBtnSprite, bgMenu, menu_selector(SpaceMenu::onCloseButton)
     );
 
-    // former mess :)
-    // (look in commit history for context)
     this->showNoAnim();
 
     // add children
@@ -70,7 +67,6 @@ bool SpaceMenu::init() {
     this->setKeypadEnabled(true);
     touchDispatcher->setForcePrio(touchDispatcher->getForcePrio() - 25);
 
-    // more mess
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
     bgMenu->setTouchPriority(-999);
@@ -114,12 +110,6 @@ void SpaceMenu::openAnim()
 
 void SpaceMenu::onCloseButton(CCObject*)
 {
-    /*visible = false;
-    meImCool->setVisible(false);
-    meImCool->setTouchEnabled(false);
-    meImCool->setMouseEnabled(false);
-    meImCool->setKeypadEnabled(false);
-    */
     InvokeBindEvent("close-spacemenu"_spr, true).post();
 }
 
@@ -158,3 +148,5 @@ void SpaceMenu::hide(CCObject*)
     this->setKeypadEnabled(false);
     background->setPosition(CCPoint(0, screenSize.height));
 }
+
+// you
