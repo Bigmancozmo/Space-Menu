@@ -52,10 +52,12 @@ bool SpaceMenu::init() {
 
     auto fullLogoSprite = CCSprite::createWithSpriteFrameName("SM_FullLogo.png"_spr);
     fullLogoSprite->setAnchorPoint(CCPoint(1.0f, 1.0f));
+    fullLogoSprite->setPosition(panelSize);
 
     auto creatorLabel = CCLabelBMFont::create("made by bigmancozmo", "Montserrat-Medium.fnt"_spr);
-    auto creatorLabelY = fullLogoSprite->getContentHeight() * fullLogoSprite->getScaleY();
+    auto creatorLabelY = fullLogoSprite->getPositionY() - fullLogoSprite->getContentHeight() * fullLogoSprite->getScaleY();
     creatorLabel->setPositionY(creatorLabelY);
+    creatorLabel->setPositionX(fullLogoSprite->getPositionX());
     creatorLabel->setAnchorPoint(CCPoint(1.0f, 1.0f));
 
     this->showNoAnim();
