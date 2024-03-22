@@ -14,7 +14,7 @@
 			]
 		},
 		"fonts": {
-			"Montserrat": {
+			"Montserrat-Medium": {
 				"path": "res/fonts/Montserrat-Medium.ttf",
 				"size": 48
 			}

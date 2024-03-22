@@ -50,7 +50,7 @@ bool SpaceMenu::init() {
     closeBtn->setPositionX(-(panelSize.x / 2) - 20.6f);
     closeBtn->setPositionY((panelSize.y / 3.17f) + 19.0f);
 
-    auto labelTest = CCLabelBMFont::create("The quick brown fox jumps over the lazy dog.", "Montserrat.fnt"_spr);
+    auto labelTest = CCLabelBMFont::create("The quick brown fox jumps over the lazy dog.", "Montserrat-Medium.fnt"_spr);
 
     this->showNoAnim();
 
