@@ -13,13 +13,10 @@
 				"res/hearts/*.png"
 			]
 		},
-		"fonts": {
-			"Montserrat-Medium": {
-				"path": "res/fonts/Montserrat-Medium.ttf",
-				"size": 48,
-				"outline": true
-			}
-		}
+		"files": [
+			"res/fonts-fixed/*.png",
+			"res/fonts-fixed/*.fnt"
+		]
 	},
 	"dependencies": [
 		{
