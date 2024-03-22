@@ -19,19 +19,5 @@ endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
-ADD_CUSTOM_TARGET(clear_cache ALL WORKING_DIRECTORY ${PROJECT_SOURCE_DIR} COMMAND geode.exe project clear-cache)
-
-#message(STATUS "fixing fonts")
-# file(REMOVE "${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode")
-
-#file(MAKE_DIRECTORY "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL")
-
-#file(COPY "${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode" DESTINATION "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/")
-
-#file(ARCHIVE_EXTRACT INPUT "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/bigmancozmo.spacemenu.geode" DESTINATION "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/")
-#file(REMOVE "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/bigmancozmo.spacemenu.geode")
-
-#message(STATUS "fixed!")
-
 setup_geode_mod(${PROJECT_NAME})
 
