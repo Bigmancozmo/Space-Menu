@@ -50,9 +50,13 @@ bool SpaceMenu::init() {
     closeBtn->setPositionX(-(panelSize.x / 2) - 20.6f);
     closeBtn->setPositionY((panelSize.y / 3.17f) + 19.0f);
 
+    auto creatorInfoContainer = CCLayer::create();
+    creatorInfoContainer->setAnchorPoint(CCPoint(1.0f, 1.0f));
+    creatorInfoContainer->setPosition(panelSize);
+    creatorInfoContainer->setContentSize(CCSize(0.0f, 0.0f));
+
     auto fullLogoSprite = CCSprite::createWithSpriteFrameName("SM_FullLogo.png"_spr);
     fullLogoSprite->setAnchorPoint(CCPoint(1.0f, 1.0f));
-    fullLogoSprite->setPosition(panelSize);
 
     auto creatorLabel = CCLabelBMFont::create("made by bigmancozmo", "Montserrat-Medium.fnt"_spr);
     auto creatorLabelY = fullLogoSprite->getPositionY() - fullLogoSprite->getContentHeight() * fullLogoSprite->getScaleY();
@@ -71,8 +75,9 @@ bool SpaceMenu::init() {
     menu->setPosition(screenSize / 2);
     background->setPosition(CCPoint(0, screenSize.height));
     bgMenu->addChild(closeBtn);
-    background->addChild(creatorLabel);
-    background->addChild(fullLogoSprite);
+    creatorInfoContainer->addChild(creatorLabel);
+    creatorInfoContainer->addChild(fullLogoSprite);
+    background->addChild(creatorInfoContainer);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
