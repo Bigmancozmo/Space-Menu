@@ -12,6 +12,12 @@
 				"res/logos/*.png",
 				"res/hearts/*.png"
 			]
+		},
+		"fonts": {
+			"Montserrat-Medium": {
+				"path": "res/fonts/Montserrat-Medium.ttf",
+				"size": 48
+			}
 		}
 	},
 	"dependencies": [
