@@ -35,6 +35,11 @@ bool SpaceMenu::init() {
     CCLayerColor* backgroundFade = CCLayerColor::create(fadeColor);
     CCMenu* menu = CCMenu::create();
 
+    auto fadeOutAction = CCFadeOut::create(0.0f);
+    auto fadeInAction = CCFadeIn::create(1.0f);
+    auto sequence = CCSequence::create(fadeOutAction, fadeInAction, nullptr);
+    background->runAction(sequence);
+
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
     background->setID("sm-background");
@@ -52,16 +57,17 @@ bool SpaceMenu::init() {
 
     auto creatorInfoContainer = CCLayer::create();
     creatorInfoContainer->setAnchorPoint(CCPoint(1.0f, 1.0f));
-    creatorInfoContainer->setPosition(panelSize);
+    creatorInfoContainer->setPosition(panelSize - CCPoint(7.0f, 7.0f));
     creatorInfoContainer->setContentSize(CCSize(0.0f, 0.0f));
+    creatorInfoContainer->setScale(0.525);
 
     auto fullLogoSprite = CCSprite::createWithSpriteFrameName("SM_FullLogo.png"_spr);
     fullLogoSprite->setAnchorPoint(CCPoint(1.0f, 1.0f));
 
     auto creatorLabel = CCLabelBMFont::create("made by bigmancozmo", "Montserrat-Medium.fnt"_spr);
     auto creatorLabelY = fullLogoSprite->getPositionY() - fullLogoSprite->getContentHeight() * fullLogoSprite->getScaleY();
-    creatorLabel->setPositionY(creatorLabelY);
-    creatorLabel->setPositionX(fullLogoSprite->getPositionX());
+    creatorLabel->setPositionY(creatorLabelY + 8.0f);
+    creatorLabel->setPositionX(fullLogoSprite->getPositionX() - 8.0f);
     creatorLabel->setAnchorPoint(CCPoint(1.0f, 1.0f));
 
     this->showNoAnim();
