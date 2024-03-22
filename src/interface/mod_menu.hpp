@@ -38,7 +38,7 @@ bool SpaceMenu::init() {
     auto fadeOutAction = CCFadeOut::create(0.0f);
     auto fadeInAction = CCFadeIn::create(1.0f);
     auto sequence = CCSequence::create(fadeOutAction, fadeInAction, nullptr);
-    background->runAction(sequence);
+    backgroundFade->runAction(sequence);
 
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
