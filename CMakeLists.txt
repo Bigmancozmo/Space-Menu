@@ -6,10 +6,6 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(SpaceMenu VERSION 1.0.0)
 
-message(STATUS "removing ${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode")
-file(REMOVE "${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode")
-message(STATUS "removed!")
-
 add_library(${PROJECT_NAME} SHARED
     src/main.cpp
     # Add your cpp files here
@@ -23,4 +19,17 @@ endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
+#message(STATUS "fixing fonts")
+# file(REMOVE "${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode")
+
+#file(MAKE_DIRECTORY "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL")
+
+#file(COPY "${PROJECT_SOURCE_DIR}/out/build/Geode Build/bigmancozmo.spacemenu.geode" DESTINATION "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/")
+
+#file(ARCHIVE_EXTRACT INPUT "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/bigmancozmo.spacemenu.geode" DESTINATION "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/")
+#file(REMOVE "${PROJECT_SOURCE_DIR}/out/build/Geode Build/BFDICOOL/bigmancozmo.spacemenu.geode")
+
+#message(STATUS "fixed!")
+
 setup_geode_mod(${PROJECT_NAME})
+
