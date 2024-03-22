@@ -50,6 +50,8 @@ bool SpaceMenu::init() {
     closeBtn->setPositionX(-(panelSize.x / 2) - 20.6f);
     closeBtn->setPositionY((panelSize.y / 3.17f) + 19.0f);
 
+    auto labelTest = CCLabelBMFont::create("The quick brown fox jumps over the lazy dog.", "Montserrat.fnt"_spr);
+
     this->showNoAnim();
 
     // add children
@@ -61,6 +63,7 @@ bool SpaceMenu::init() {
     menu->setPosition(screenSize / 2);
     background->setPosition(CCPoint(0, screenSize.height));
     bgMenu->addChild(closeBtn);
+    background->addChild(labelTest);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
