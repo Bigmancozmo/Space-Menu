@@ -10,7 +10,8 @@
 		"spritesheets": {
 			"SM_Sheet": [
 				"res/logos/*.png",
-				"res/hearts/*.png"
+				"res/hearts/*.png",
+				"res/*.png"
 			]
 		},
 		"files": [

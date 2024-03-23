@@ -22,6 +22,7 @@ private:
     void openAnim();
     void onCloseButton(CCObject*);
     SpaceMenu* meImCool;
+    CCLayerColor* backgroundFade;
 };
 
 bool SpaceMenu::init() {
@@ -32,13 +33,11 @@ bool SpaceMenu::init() {
     CCPoint panelSize = screenSize - CCPoint(50, 50);
 
     ccColor4B fadeColor = ccColor4B(0.0f, 0.0f, 0.0f, 150.0f);
-    CCLayerColor* backgroundFade = CCLayerColor::create(fadeColor);
+    backgroundFade = CCLayerColor::create(fadeColor);
     CCMenu* menu = CCMenu::create();
 
-    auto fadeOutAction = CCFadeOut::create(0.0f);
-    auto fadeInAction = CCFadeIn::create(1.0f);
-    auto sequence = CCSequence::create(fadeOutAction, fadeInAction, nullptr);
-    backgroundFade->runAction(sequence);
+    //auto sequence = CCSequence::create(CCFadeOut::create(0.0f), CCFadeIn::create(1.0f), nullptr);
+    //backgroundFade->runAction(sequence);
 
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
@@ -132,6 +131,9 @@ void SpaceMenu::openAnim()
     auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
     auto eased = CCEaseElasticOut::create(moveToAction);
     background->runAction(eased);
+
+    auto sequence = CCSequence::create(CCFadeOut::create(0.0f), CCFadeTo::create(0.5f, 150), nullptr);
+    backgroundFade->runAction(sequence);
 }
 
 void SpaceMenu::onCloseButton(CCObject*)
