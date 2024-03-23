@@ -24,7 +24,8 @@ private:
     void onCloseButton(CCObject*);
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
-    CCLayer* loadMod(Hack* hack, CCMenu* menu);
+    template<typename T>
+    void loadMod(CCMenu* menu);
 };
 
 bool SpaceMenu::init() {
@@ -48,7 +49,7 @@ bool SpaceMenu::init() {
     background->addChild(bgMenu);
 
     auto hacksMenu = CCMenu::create();
-    background->addChild(bgMenu);
+    background->addChild(hacksMenu);
 
     CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
     CCMenuItemSpriteExtra* closeBtn = CCMenuItemSpriteExtra::create(
@@ -89,6 +90,8 @@ bool SpaceMenu::init() {
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
 
+    loadMod<Noclip>(hacksMenu);
+
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
     this->setVisible(true);
@@ -100,7 +103,7 @@ bool SpaceMenu::init() {
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
     bgMenu->setTouchPriority(-999);
-    hacksMenu->setTouchPriority(-999);
+    hacksMenu->setTouchPriority(-998);
 
     meImCool = this;
 
@@ -147,13 +150,22 @@ void SpaceMenu::onCloseButton(CCObject*)
     InvokeBindEvent("close-spacemenu"_spr, true).post();
 }
 
-CCLayer* SpaceMenu::loadMod(Hack* hack, CCMenu* menu)
+template<typename T>
+void SpaceMenu::loadMod(CCMenu* menu)
 {
     CCLayer* hackLayer = CCLayer::create();
+    CCMenu* layerMenu = CCMenu::create();
 
-    auto toggler = CCMenuItemToggler::createWithStandardSprites(menu, nullptr, 1.0f);
+    layerMenu->setTouchPriority(-997);
+    
+    auto toggler = CCMenuItemToggler::createWithStandardSprites(layerMenu, nullptr, 1.0f);
+    toggler->setAnchorPoint(CCPoint(0.5f, 0.5f));
 
-    return hackLayer;
+    hackLayer->addChild(layerMenu);
+    layerMenu->setPosition(CCPoint(0.0f, 0.0f));
+    layerMenu->addChild(toggler);
+
+    menu->addChild(hackLayer);
 }
 
 void SpaceMenu::show()
