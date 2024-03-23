@@ -3,6 +3,7 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
+#include "hacks/hacks.h"
 
 using namespace geode::prelude;
 using namespace std;
@@ -23,6 +24,7 @@ private:
     void onCloseButton(CCObject*);
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
+    CCLayer* loadMod(Hack* hack, CCMenu* menu);
 };
 
 bool SpaceMenu::init() {
@@ -43,6 +45,9 @@ bool SpaceMenu::init() {
     background->setID("sm-background");
 
     auto bgMenu = CCMenu::create();
+    background->addChild(bgMenu);
+
+    auto hacksMenu = CCMenu::create();
     background->addChild(bgMenu);
 
     CCSprite* closeBtnSprite = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
@@ -79,6 +84,7 @@ bool SpaceMenu::init() {
     menu->setPosition(screenSize / 2);
     background->setPosition(CCPoint(0, screenSize.height));
     bgMenu->addChild(closeBtn);
+    //bgMenu->addChild(toggler);
     creatorInfoContainer->addChild(creatorLabel);
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
@@ -94,6 +100,7 @@ bool SpaceMenu::init() {
     this->setTouchPriority(-200);
     menu->setTouchPriority(-300);
     bgMenu->setTouchPriority(-999);
+    hacksMenu->setTouchPriority(-999);
 
     meImCool = this;
 
@@ -138,6 +145,15 @@ void SpaceMenu::openAnim()
 void SpaceMenu::onCloseButton(CCObject*)
 {
     InvokeBindEvent("close-spacemenu"_spr, true).post();
+}
+
+CCLayer* SpaceMenu::loadMod(Hack* hack, CCMenu* menu)
+{
+    CCLayer* hackLayer = CCLayer::create();
+
+    auto toggler = CCMenuItemToggler::createWithStandardSprites(menu, nullptr, 1.0f);
+
+    return hackLayer;
 }
 
 void SpaceMenu::show()
