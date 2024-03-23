@@ -165,6 +165,8 @@ void SpaceMenu::loadMod(CCMenu* menu)
     layerMenu->setPosition(CCPoint(0.0f, 0.0f));
     layerMenu->addChild(toggler);
 
+    toggler->setEnabled(T::enabled);
+
     menu->addChild(hackLayer);
 }
 

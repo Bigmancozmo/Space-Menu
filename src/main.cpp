@@ -2,6 +2,7 @@
 #include <Geode/modify/MenuLayer.hpp>
 #include "interface/sm_layer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
+#include <iostream>
 
 using namespace geode::prelude;
 using namespace keybinds;
