@@ -36,8 +36,7 @@ bool SpaceMenu::init() {
     backgroundFade = CCLayerColor::create(fadeColor);
     CCMenu* menu = CCMenu::create();
 
-    //auto sequence = CCSequence::create(CCFadeOut::create(0.0f), CCFadeIn::create(1.0f), nullptr);
-    //backgroundFade->runAction(sequence);
+    backgroundFade->setOpacity(0);
 
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
@@ -132,8 +131,8 @@ void SpaceMenu::openAnim()
     auto eased = CCEaseElasticOut::create(moveToAction);
     background->runAction(eased);
 
-    auto sequence = CCSequence::create(CCFadeOut::create(0.0f), CCFadeTo::create(0.5f, 150), nullptr);
-    backgroundFade->runAction(sequence);
+    auto fade = CCFadeTo::create(0.1, 150);
+    backgroundFade->runAction(fade);
 }
 
 void SpaceMenu::onCloseButton(CCObject*)
@@ -175,4 +174,5 @@ void SpaceMenu::hide(CCObject*)
     this->setMouseEnabled(false);
     this->setKeypadEnabled(false);
     background->setPosition(CCPoint(0, screenSize.height));
+    backgroundFade->setOpacity(0);
 }
