@@ -12,6 +12,8 @@ public:
 	inline static bool enabled = false;
 	inline static void setEnabled(bool enabled2) {
 		enabled = enabled2;
+		std::string hackKey = name + "-hack";
+		Mod::get()->setSavedValue<bool>(hackKey, enabled2);
 	}
 	inline static void loadValue() {
 		std::string hackKey = name + "-hack";
