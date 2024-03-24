@@ -3,7 +3,7 @@
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
-#include <Geode/modify/EditorPauseLayer.hpp> // show
+#include <Geode/modify/EditorPauseLayer.hpp>
 #include <Geode/modify/LevelEditorLayer.hpp> // hide
 #include <Geode/modify/LevelSelectLayer.hpp> // show
 #include <Geode/modify/LevelInfoLayer.hpp> // show
@@ -63,6 +63,28 @@ class $modify(PauseLayer) {
         PauseLayer::customSetup();
         smLayer->setVisible(true);
         smLayer->showButton();
+    }
+};
+
+class $modify(EditorPauseLayer) {
+    bool init(LevelEditorLayer * level) {
+        if (!EditorPauseLayer::init(level)) return false;
+        smLayer->setVisible(true);
+        smLayer->hideButton();
+
+        CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
+        CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
+            sprite, this, menu_selector(SMLayer::onButton)
+        );
+
+        float buttonSize = 0.25f;
+        sprite->setScale(buttonSize);
+        sprite->setAnchorPoint(CCPoint(0.0f, 0.0f));
+        sm_button->setContentSize(CCSize(128.0f * buttonSize, 128.0f * buttonSize));
+
+        this->getChildByID("guidelines-menu")->addChild(sm_button);
+
+        return true;
     }
 };
 
