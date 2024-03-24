@@ -25,6 +25,8 @@ public:
 
 class $modify(PlayLayer) {
 	void destroyPlayer(PlayerObject * player, GameObject * p1) {
-		if (!Noclip::enabled) { PlayLayer::destroyPlayer(player, p1); }
+		if (!(Mod::get()->getSavedValue<bool>(Noclip::hackKey))) {
+			PlayLayer::destroyPlayer(player, p1);
+		}
 	}
 };

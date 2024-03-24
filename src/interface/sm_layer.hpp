@@ -54,6 +54,8 @@ bool SMLayer::init() {
     this->addChild(spaceMenu);
     this->setID("SMLayer");
 
+    this->setZOrder(999);
+
 #ifdef GEODE_IS_WINDOWS
     this->template addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
         if (event->isDown()) {
