@@ -31,6 +31,16 @@ private:
     CCMenuItemSpriteExtra* sm_button;
 };
 
+inline void SMLayer::hideButton()
+{
+    sm_button->setVisible(false);
+}
+
+inline void SMLayer::showButton()
+{
+    sm_button->setVisible(true);
+}
+
 bool SMLayer::init() {
     if (!CCLayer::init()) {
         return false;
@@ -76,14 +86,4 @@ SMLayer* SMLayer::create() {
     SMLayer* me = new SMLayer();
     me->init();
     return me;
-}
-
-void SMLayer::hideButton()
-{
-    sm_button->setVisible(false);
-}
-
-void SMLayer::showButton()
-{
-    sm_button->setVisible(true);
 }
