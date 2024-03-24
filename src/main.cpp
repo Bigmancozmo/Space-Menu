@@ -2,7 +2,7 @@
 
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
-#include <Geode/modify/PauseLayer.hpp> // show
+#include <Geode/modify/PauseLayer.hpp>
 #include <Geode/modify/EditorPauseLayer.hpp> // show
 #include <Geode/modify/LevelEditorLayer.hpp> // hide
 #include <Geode/modify/LevelSelectLayer.hpp> // show
@@ -52,6 +52,13 @@ class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         smLayer->setVisible(false);
+    }
+};
+
+class $modify(PauseLayer) {
+    void customSetup() {
+        PauseLayer::customSetup();
+        smLayer->setVisible(true);
     }
 };
 
