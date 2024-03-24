@@ -21,11 +21,3 @@ public:
 		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
 	}
 };
-
-class $modify(PlayLayer) {
-	void destroyPlayer(PlayerObject * player, GameObject * p1) {
-		if (!(Hacks::getModEnabled(Noclip::hackKey))) {
-			PlayLayer::destroyPlayer(player, p1);
-		}
-	}
-};
