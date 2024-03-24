@@ -13,6 +13,8 @@ class SMLayer : public CCLayer {
 public:
     virtual bool init();
     static SMLayer* create();
+    void hideButton();
+    void showButton();
     void onButton(CCObject* obj) {
         if (menuWasCreated) {
             menu->show();
@@ -26,6 +28,7 @@ public:
 private:
     bool menuWasCreated = false;
     SpaceMenu* menu;
+    CCMenuItemSpriteExtra* sm_button;
 };
 
 bool SMLayer::init() {
@@ -36,7 +39,7 @@ bool SMLayer::init() {
 
     CCMenu* spaceMenu = CCMenu::create();
     CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
-    CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
+    sm_button = CCMenuItemSpriteExtra::create(
         sprite, this, menu_selector(SMLayer::onButton)
     );
 
@@ -73,4 +76,14 @@ SMLayer* SMLayer::create() {
     SMLayer* me = new SMLayer();
     me->init();
     return me;
+}
+
+void SMLayer::hideButton()
+{
+    sm_button->setVisible(false);
+}
+
+void SMLayer::showButton()
+{
+    sm_button->setVisible(true);
 }
