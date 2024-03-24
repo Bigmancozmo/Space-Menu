@@ -183,7 +183,7 @@ void SpaceMenu::loadMod(CCMenu* menu)
         toggler->activate();
     }
 
-    hackLayer->addChild(label);
+    layerMenu->addChild(label);
 
     menu->addChild(hackLayer);
 }
