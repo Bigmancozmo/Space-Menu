@@ -26,6 +26,7 @@ private:
     CCLayerColor* backgroundFade;
     template<typename T>
     void loadMod(CCMenu* menu);
+    void onModToggle(CCObject* sender);
 };
 
 bool SpaceMenu::init() {
@@ -150,6 +151,15 @@ void SpaceMenu::onCloseButton(CCObject*)
     InvokeBindEvent("close-spacemenu"_spr, true).post();
 }
 
+inline void SpaceMenu::onModToggle(CCObject* sender)
+{
+    auto toggle = static_cast<CCMenuItemToggle*>(sender);
+    auto hackKey = toggle->getID();
+    
+    auto val = Mod::get()->getSavedValue<bool>(hackKey, false);
+    Mod::get()->setSavedValue<bool>(hackKey, !val);
+}
+
 template<typename T>
 void SpaceMenu::loadMod(CCMenu* menu)
 {
@@ -158,8 +168,10 @@ void SpaceMenu::loadMod(CCMenu* menu)
 
     layerMenu->setTouchPriority(-997);
     
-    auto toggler = CCMenuItemToggler::createWithStandardSprites(layerMenu, nullptr, 1.0f);
+    auto toggler = CCMenuItemToggler::createWithStandardSprites(layerMenu, menu_selector(SpaceMenu::onModToggle), 1.0f);
     toggler->setAnchorPoint(CCPoint(0.5f, 0.5f));
+
+    toggler->setID(T::hackKey);
 
     hackLayer->addChild(layerMenu);
     layerMenu->setPosition(CCPoint(0.0f, 0.0f));
