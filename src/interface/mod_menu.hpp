@@ -92,6 +92,7 @@ bool SpaceMenu::init() {
     background->addChild(creatorInfoContainer);
 
     loadMod<Noclip>(hacksMenu);
+    loadMod<TestHack2>(hacksMenu);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
