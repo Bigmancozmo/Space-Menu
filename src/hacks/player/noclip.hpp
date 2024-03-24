@@ -13,12 +13,12 @@ public:
 	inline static std::string description = "Allows the player to clip through blocks and spikes.";
 	inline static std::string hackKey = "noclip-hack";
 
-	inline static void setEnabled(bool enabled2) {
-		Hacks::setModEnabled(hackKey, enabled2);
+	inline static void setEnabled(bool enabled) {
+		Hacks::setModEnabled(hackKey, enabled);
 	}
 	inline static void loadValue() {
-		cout << Mod::get()->getSavedValue<bool>(hackKey, false) << endl;
-		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey, false));
+		cout << Mod::get()->getSavedValue<bool>(hackKey) << endl;
+		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
 	}
 };
 

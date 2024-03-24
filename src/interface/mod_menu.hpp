@@ -177,6 +177,7 @@ void SpaceMenu::loadMod(CCMenu* menu)
     layerMenu->addChild(toggler);
 
     if (Hacks::getModEnabled(T::hackKey)) {
+        SpaceMenu::onModToggle(static_cast<CCObject*>(toggler)); // fake a button press
         toggler->activate();
     }
 
