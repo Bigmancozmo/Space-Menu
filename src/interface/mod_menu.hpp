@@ -188,6 +188,8 @@ void SpaceMenu::loadMod(CCMenu* menu)
     label->setAnchorPoint(CCPoint(0.0f, 0.5f));
     label->setPositionX((toggler->getContentWidth() / 2) + 5.5f);
 
+    hackLayer->setContentSize(toggler->getContentSize());
+
     menu->addChild(hackLayer);
 }
 
