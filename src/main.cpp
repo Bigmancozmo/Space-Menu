@@ -1,5 +1,12 @@
 #include <Geode/Geode.hpp>
+
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/modify/EditorPauseLayer.hpp>
+#include <Geode/modify/LevelEditorLayer.hpp>
+//#include <Geode/modify>
+
 #include "interface/sm_layer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <iostream>
@@ -8,6 +15,7 @@ using namespace geode::prelude;
 using namespace keybinds;
 
 bool buttonExists = false;
+SMLayer* smLayer;
 
 class $modify(MenuLayer){
 
@@ -26,10 +34,12 @@ class $modify(MenuLayer){
 
         if (buttonExists) return true;
 
-        auto layer = SMLayer::create();
-        this->addChild(layer);
+        smLayer = SMLayer::create();
+        this->addChild(smLayer);
 
-        SceneManager::get()->keepAcrossScenes(layer);
+        smLayer->setVisible(true);
+
+        SceneManager::get()->keepAcrossScenes(smLayer);
 
         buttonExists = true;
 
