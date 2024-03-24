@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
-#include "hacks/hacks.h"
+#include "hacks/includeHacks.h"
 
 using namespace geode::prelude;
 using namespace std;
@@ -153,15 +153,8 @@ void SpaceMenu::onCloseButton(CCObject*)
 
 void SpaceMenu::onModToggle(CCObject* sender)
 {
-    cout << "pluh" << endl;
-    auto toggle = static_cast<CCMenuItemToggle*>(sender);
-    cout << "plee" << endl;
-    auto hackKey = toggle->getID();
-    cout << "ploo" << endl;
-    //auto val = Mod::get()->getSavedValue<bool>(hackKey, false);
-    //cout << "plie" << endl;
-    Mod::get()->setSavedValue<bool>(hackKey, !(Mod::get()->getSavedValue<bool>(hackKey, false)));
-    cout << "set " << hackKey << " to " << !(Mod::get()->getSavedValue<bool>(hackKey, false));
+    auto hackKey = static_cast<CCMenuItemToggle*>(sender)->getID();
+    Hacks::setModEnabled(hackKey, !(Hacks::getModEnabled(hackKey)));
 }
 
 template<typename T>
@@ -174,16 +167,14 @@ void SpaceMenu::loadMod(CCMenu* menu)
     
     auto toggler = CCMenuItemToggler::createWithStandardSprites(layerMenu, menu_selector(SpaceMenu::onModToggle), 1.0f);
     toggler->setAnchorPoint(CCPoint(0.5f, 0.5f));
-
-    T::myToggle = toggler;
-
+    
     toggler->setID(T::hackKey);
 
     hackLayer->addChild(layerMenu);
     layerMenu->setPosition(CCPoint(0.0f, 0.0f));
     layerMenu->addChild(toggler);
-    std::cout << T::enabled << std::endl;
-    if (T::enabled) {
+
+    if (Hacks::getModEnabled(T::hackKey)) {
         toggler->activate();
     }
 
