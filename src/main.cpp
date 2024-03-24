@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 
-#include <Geode/modify/MenuLayer.hpp> // show
+#include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp> // show
 #include <Geode/modify/EditorPauseLayer.hpp> // show
