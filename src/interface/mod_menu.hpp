@@ -186,7 +186,7 @@ void SpaceMenu::loadMod(CCMenu* menu)
     layerMenu->addChild(label);
     label->setScale(0.6f);
     label->setAnchorPoint(CCPoint(0.0f, 0.5f));
-    label->setPositionX((toggler->getContentWidth() / 2) + 4);
+    label->setPositionX((toggler->getContentWidth() / 2) + 6);
 
     menu->addChild(hackLayer);
 }
