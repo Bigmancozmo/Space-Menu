@@ -17,6 +17,7 @@ public:
 		Hacks::setModEnabled(hackKey, enabled2);
 	}
 	inline static void loadValue() {
+		cout << Mod::get()->getSavedValue<bool>(hackKey, false) << endl;
 		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey, false));
 	}
 };
