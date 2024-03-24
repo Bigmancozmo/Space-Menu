@@ -170,6 +170,8 @@ void SpaceMenu::loadMod(CCMenu* menu)
     
     toggler->setID(T::hackKey);
 
+    auto label = CCLabelBMFont::create((T::name).c_str(), "bigFont.fnt");
+
     T::loadValue();
 
     hackLayer->addChild(layerMenu);
