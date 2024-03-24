@@ -6,7 +6,7 @@
 #include <Geode/modify/EditorPauseLayer.hpp>
 #include <Geode/modify/LevelEditorLayer.hpp> // hide
 #include <Geode/modify/LevelSelectLayer.hpp> // show
-#include <Geode/modify/LevelInfoLayer.hpp> // show
+#include <Geode/modify/LevelInfoLayer.hpp>
 
 #include "interface/sm_layer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
@@ -50,8 +50,17 @@ class $modify(MenuLayer){
 };
 
 class $modify(PlayLayer) {
-    bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
+    bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
+        smLayer->setVisible(false);
+        smLayer->showButton();
+        return true;
+    }
+};
+
+class $modify(LevelInfoLayer) {
+    bool init(GJGameLevel* p0, bool p1) {
+        if (!LevelInfoLayer::init(p0, p1)) return false;
         smLayer->setVisible(false);
         smLayer->showButton();
         return true;
@@ -67,7 +76,7 @@ class $modify(PauseLayer) {
 };
 
 class $modify(EditorPauseLayer) {
-    bool init(LevelEditorLayer * level) {
+    bool init(LevelEditorLayer* level) {
         if (!EditorPauseLayer::init(level)) return false;
         smLayer->setVisible(true);
         smLayer->hideButton();
