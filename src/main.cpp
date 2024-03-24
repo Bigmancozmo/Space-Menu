@@ -39,6 +39,7 @@ class $modify(MenuLayer){
         this->addChild(smLayer);
 
         smLayer->setVisible(true);
+        smLayer->showButton();
 
         SceneManager::get()->keepAcrossScenes(smLayer);
 
@@ -52,6 +53,7 @@ class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         smLayer->setVisible(false);
+        smLayer->showButton();
         return true;
     }
 };
@@ -60,6 +62,7 @@ class $modify(PauseLayer) {
     void customSetup() {
         PauseLayer::customSetup();
         smLayer->setVisible(true);
+        smLayer->showButton();
     }
 };
 
