@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <Geode/Geode.hpp>
+
+using namespace geode::prelude;
 
 class Hacks {
 public:
