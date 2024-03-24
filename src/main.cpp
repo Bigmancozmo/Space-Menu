@@ -1,11 +1,12 @@
 #include <Geode/Geode.hpp>
 
-#include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/MenuLayer.hpp> // show
 #include <Geode/modify/PlayLayer.hpp>
-#include <Geode/modify/PauseLayer.hpp>
-#include <Geode/modify/EditorPauseLayer.hpp>
-#include <Geode/modify/LevelEditorLayer.hpp>
-//#include <Geode/modify>
+#include <Geode/modify/PauseLayer.hpp> // show
+#include <Geode/modify/EditorPauseLayer.hpp> // show
+#include <Geode/modify/LevelEditorLayer.hpp> // hide
+#include <Geode/modify/LevelSelectLayer.hpp> // show
+#include <Geode/modify/LevelInfoLayer.hpp> // show
 
 #include "interface/sm_layer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
@@ -44,6 +45,13 @@ class $modify(MenuLayer){
         buttonExists = true;
 
         return true;
+    }
+};
+
+class $modify(PlayLayer) {
+    bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
+        if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
+        smLayer->setVisible(false);
     }
 };
 
