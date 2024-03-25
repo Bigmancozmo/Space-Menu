@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
 
-#include "hacks/includeHacks.h"
+#include "hacks/IncludeHacks.h"
 
 using namespace geode::prelude;
 
