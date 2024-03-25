@@ -36,8 +36,7 @@ bool SpaceMenu::init() {
     
     CCPoint panelSize = screenSize - CCPoint(50, 50);
 
-    ccColor4B fadeColor = ccColor4B(0.0f, 0.0f, 0.0f, 150.0f);
-    backgroundFade = CCLayerColor::create(fadeColor);
+    backgroundFade = CCLayerColor::create();
     CCMenu* menu = CCMenu::create();
 
     backgroundFade->setOpacity(0);
