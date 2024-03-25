@@ -7,6 +7,7 @@
 #include <Geode/modify/LevelEditorLayer.hpp> // hide
 #include <Geode/modify/LevelSelectLayer.hpp> // show
 #include <Geode/modify/LevelInfoLayer.hpp> // show
+#include <Geode/modify/EditLevelLayer.hpp> // show / reset
 
 #include "interface/sm_layer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
@@ -51,6 +52,8 @@ class $modify(MenuLayer){
 
 class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
+        smLayer->resetButtonPositioning();
+
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         smLayer->setVisible(false);
         smLayer->showButton();
@@ -60,17 +63,32 @@ class $modify(PlayLayer) {
 
 class $modify(PauseLayer) {
     void customSetup() {
+        smLayer->resetButtonPositioning();
         PauseLayer::customSetup();
         smLayer->setVisible(true);
         smLayer->showButton();
     }
 };
 
+class $modify(EditLevelLayer) {
+    bool init(GJGameLevel * level) {
+        smLayer->resetButtonPositioning();
+        if (!EditLevelLayer::init(level)) { return false; }
+        smLayer->setVisible(true);
+        smLayer->showButton();
+        return true;
+    }
+};
+
 class $modify(EditorPauseLayer) {
     bool init(LevelEditorLayer * level) {
         if (!EditorPauseLayer::init(level)) return false;
+
+        auto guidelinesMenu = this->getChildByID("guidelines-menu");
+
         smLayer->setVisible(true);
-        smLayer->hideButton();
+        smLayer->showButton();
+        smLayer->setButtonParent(guidelinesMenu);
 
         CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
         CCMenuItemSpriteExtra* sm_button = CCMenuItemSpriteExtra::create(
@@ -81,8 +99,6 @@ class $modify(EditorPauseLayer) {
         sprite->setScale(buttonSize);
         sprite->setAnchorPoint(CCPoint(0.0f, 0.0f));
         sm_button->setContentSize(CCSize(128.0f * buttonSize, 128.0f * buttonSize));
-
-        this->getChildByID("guidelines-menu")->addChild(sm_button);
 
         return true;
     }

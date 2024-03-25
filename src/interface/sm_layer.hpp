@@ -15,6 +15,8 @@ public:
     static SMLayer* create();
     void hideButton();
     void showButton();
+    void setButtonParent(CCNode* parent);
+    void resetButtonPositioning();
     void onButton(CCObject* obj) {
         if (menuWasCreated) {
             menu->show();
@@ -29,6 +31,7 @@ private:
     bool menuWasCreated = false;
     SpaceMenu* menu;
     CCMenuItemSpriteExtra* sm_button;
+    CCMenu* spaceMenu;
 };
 
 inline void SMLayer::hideButton()
@@ -41,13 +44,30 @@ inline void SMLayer::showButton()
     sm_button->setVisible(true);
 }
 
+inline void SMLayer::setButtonParent(CCNode* parent)
+{
+    sm_button->retain();
+    sm_button->removeFromParent();
+    parent->addChild(sm_button);
+    sm_button->release();
+}
+
+inline void SMLayer::resetButtonPositioning()
+{
+    CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+    setButtonParent(spaceMenu);
+    sm_button->setPositionX(screenSize.width / -2 + 57);
+    sm_button->setPositionY(screenSize.height / 2 - 18.5f);
+}
+
 bool SMLayer::init() {
     if (!CCLayer::init()) {
         return false;
     }
+
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCMenu* spaceMenu = CCMenu::create();
+    spaceMenu = CCMenu::create();
     CCSprite* sprite = CCSprite::createWithSpriteFrameName("SM_Button.png"_spr);
     sm_button = CCMenuItemSpriteExtra::create(
         sprite, this, menu_selector(SMLayer::onButton)
