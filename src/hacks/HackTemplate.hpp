@@ -2,7 +2,7 @@
 
 #include <Geode/Geode.hpp>
 #include <iostream>
-#include "hacks/HackManager.hpp"
+#include "src/hacks/HackManager.hpp"
 
 using namespace geode::prelude;
 using namespace std;
