@@ -1,4 +1,4 @@
 #pragma once
 
 // Player Hacks
-#include "src/hacks/player/Noclip.hpp"
+#include "hacks/player/Noclip.hpp"

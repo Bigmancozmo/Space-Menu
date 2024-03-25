@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
-#include "src/hacks/Hacks.h"
+#include "hacks/Hacks.h"
 
 using namespace geode::prelude;
 using namespace std;

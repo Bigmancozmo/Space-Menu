@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
-#include "hacks/Hackkemplate.hpp"
-#include "src/hacks/HackManager.hpp"
+#include "hacks/HackTemplate.hpp"
+#include "hacks/HackManager.hpp"
 #include <Geode/modify/PlayLayer.hpp>
 
 using namespace geode::prelude;
