@@ -2,7 +2,7 @@
 
 #include <Geode/Geode.hpp>
 #include <iostream>
-#include "src/hacks/HackManager.hpp"
+#include "hacks/HackManager.hpp"
 
 using namespace geode::prelude;
 using namespace std;
@@ -19,4 +19,4 @@ public:
 	inline static void loadValue() {
 		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
 	}
-HackManager
+}

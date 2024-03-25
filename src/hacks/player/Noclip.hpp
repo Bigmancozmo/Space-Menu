@@ -1,11 +1,8 @@
 #pragma once
 
 #include <Geode/Geode.hpp>
-#include "hacks/HackTemplate.hpp"
-#include "hacks/HackManager.hpp"
-#include <Geode/modify/PlayLayer.hpp>
-
-using namespace geode::prelude;
+#include "iostream"
+#include "../HackTemplate.hpp"
 
 class Noclip : public Hack {
 public:
