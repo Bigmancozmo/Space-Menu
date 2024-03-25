@@ -2,11 +2,7 @@
 
 #include <Geode/Geode.hpp>
 #include <iostream>
-<<<<<<< HEAD
-#include "HackManager.hpp"
-=======
-#include "hacks/hacks.hpp"
->>>>>>> parent of 89cd856 (new)
+#include "hacks.hpp"
 
 using namespace geode::prelude;
 using namespace std;
@@ -23,8 +19,4 @@ public:
 	inline static void loadValue() {
 		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
 	}
-<<<<<<< HEAD
-}
-=======
 };
->>>>>>> parent of 89cd856 (new)
