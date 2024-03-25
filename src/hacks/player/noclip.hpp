@@ -1,4 +1,4 @@
 #pragma once
 
-#include "../HackTemplate.hpp"
+#include "../hack.hpp"
 
