@@ -5,6 +5,10 @@
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include "../hacks/includeHacks.h"
 
+#if __APPLE__
+#define CCEaseElasticOut CCEaseBackOut
+#endif
+
 using namespace geode::prelude;
 using namespace std;
 using namespace keybinds;
