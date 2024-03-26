@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
-#include "../hacks/includeHacks.h"
+#include "../hacks/Hacks.h"
 
 #if __APPLE__
 #define CCEaseElasticOut CCEaseBackOut

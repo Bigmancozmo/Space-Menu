@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 #include <iostream>
 #include "../HackTemplate.hpp"
-#include "../hacks.hpp"
+#include "../HackManager.hpp"
 
 using namespace geode::prelude;
 
