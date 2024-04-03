@@ -37,10 +37,11 @@ bool SpaceMenu::init() {
     CCPoint panelSize = screenSize - CCPoint(50, 50);
 #if not __APPLE__
     backgroundFade = CCLayerColor::create();
-    CCMenu* menu = CCMenu::create();
-
     backgroundFade->setOpacity(0);
 #endif
+
+    CCMenu* menu = CCMenu::create();
+
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
     background->setID("sm-background");
