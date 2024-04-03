@@ -21,7 +21,7 @@ private:
     CCScale9Sprite* background;
     void showNoAnim();
     void openAnim();
-    void onCloseButton(CCObject*);
+    void onCloseButton(CCObject* sender);
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
@@ -152,7 +152,7 @@ void SpaceMenu::openAnim()
 #endif
 }
 
-void SpaceMenu::onCloseButton(CCObject*)
+void SpaceMenu::onCloseButton(CCObject* sender)
 {
     InvokeBindEvent("close-spacemenu"_spr, true).post();
 }
