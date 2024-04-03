@@ -7,12 +7,12 @@ using namespace geode::prelude;
 
 class Hacks {
 public:
-	inline static void setModEnabled(std::string modName, bool enabled) {
+	inline static void setEnabled(std::string modName, bool enabled) {
 		modsEnabled[modName] = enabled;
 		Mod::get()->setSavedValue<bool>(modName, enabled);
 	};
 
-	inline static bool getModEnabled(std::string modName) {
+	inline static bool isEnabled(std::string modName) {
 		return modsEnabled[modName];
 	};
 

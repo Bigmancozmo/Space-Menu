@@ -7,7 +7,7 @@ using namespace geode::prelude;
 
 class $modify(PlayLayer) {
 	void destroyPlayer(PlayerObject * player, GameObject * p1) {
-		if (!(Hacks::getModEnabled(Noclip::hackKey))) {
+		if (!(Hacks::isEnabled(Noclip::hackKey))) {
 			PlayLayer::destroyPlayer(player, p1);
 		}
 	}

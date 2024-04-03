@@ -2,7 +2,7 @@
 
 #include <Geode/Geode.hpp>
 #include <iostream>
-#include "mod_menu.hpp"
+#include "ModMenu.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 
 using namespace geode::prelude;

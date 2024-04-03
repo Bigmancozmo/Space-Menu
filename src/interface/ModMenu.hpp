@@ -157,7 +157,7 @@ void SpaceMenu::onCloseButton(CCObject*)
 void SpaceMenu::onModToggle(CCObject* sender)
 {
     auto hackKey = static_cast<CCMenuItemToggle*>(sender)->getID();
-    Hacks::setModEnabled(hackKey, !(Hacks::getModEnabled(hackKey)));
+    Hacks::setEnabled(hackKey, !(Hacks::isEnabled(hackKey)));
 }
 
 template<typename T>
@@ -181,7 +181,7 @@ void SpaceMenu::loadMod(CCMenu* menu)
     layerMenu->setPosition(CCPoint(0.0f, 0.0f));
     layerMenu->addChild(toggler);
 
-    if (Hacks::getModEnabled(T::hackKey)) {
+    if (Hacks::isEnabled(T::hackKey)) {
         SpaceMenu::onModToggle(static_cast<CCObject*>(toggler)); // fake a button press
         toggler->activate();
     }

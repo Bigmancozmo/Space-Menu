@@ -14,10 +14,10 @@ public:
 	inline static std::string hackKey = "noclip-hack";
 
 	inline static void setEnabled(bool enabled) {
-		Hacks::setModEnabled(hackKey, enabled);
+		Hacks::setEnabled(hackKey, enabled);
 	}
 	inline static void loadValue() {
 		cout << Mod::get()->getSavedValue<bool>(hackKey) << endl;
-		Hacks::setModEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
+		Hacks::setEnabled(hackKey, Mod::get()->getSavedValue<bool>(hackKey));
 	}
 };
