@@ -5,10 +5,6 @@
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include "../hacks/Hacks.h"
 
-#if __APPLE__
-#define CCEaseElasticOut CCEaseBackOut
-#endif
-
 using namespace geode::prelude;
 using namespace std;
 using namespace keybinds;
@@ -142,7 +138,12 @@ void SpaceMenu::openAnim()
 {
     background->setPosition(CCPoint(0, screenSize.height));
     auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
+#if __APPLE__
+    auto eased = moveToAction;
+#else
     auto eased = CCEaseElasticOut::create(moveToAction);
+#endif
+    
     background->runAction(eased);
 
     auto fade = CCFadeTo::create(0.1, 150);
