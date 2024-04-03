@@ -35,12 +35,12 @@ bool SpaceMenu::init() {
     }
     
     CCPoint panelSize = screenSize - CCPoint(50, 50);
-
+#if not __APPLE__
     backgroundFade = CCLayerColor::create();
     CCMenu* menu = CCMenu::create();
 
     backgroundFade->setOpacity(0);
-
+#endif
     background = CCScale9Sprite::create("GJ_square02.png");
     background->setContentSize(panelSize);
     background->setID("sm-background");
@@ -77,7 +77,9 @@ bool SpaceMenu::init() {
     this->showNoAnim();
 
     // add children
+#if not __APPLE__
     this->addChild(backgroundFade);
+#endif
     menu->setPosition(CCPoint(0.0f, 0.0f));
     this->addChild(menu);
     menu->setZOrder(500);
@@ -138,16 +140,15 @@ void SpaceMenu::openAnim()
 {
     background->setPosition(CCPoint(0, screenSize.height));
     auto moveToAction = CCMoveTo::create(1, CCPoint(0, 0));
+
 #if __APPLE__
     auto eased = moveToAction;
 #else
     auto eased = CCEaseElasticOut::create(moveToAction);
-#endif
-    
     background->runAction(eased);
-
     auto fade = CCFadeTo::create(0.1, 150);
     backgroundFade->runAction(fade);
+#endif
 }
 
 void SpaceMenu::onCloseButton(CCObject*)
