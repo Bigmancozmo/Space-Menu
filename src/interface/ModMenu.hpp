@@ -16,12 +16,12 @@ public:
     void show();
     void hide(CCObject*);
     bool visible = false;
+    void onCloseButton(CCObject* sender);
 private:
     CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
     CCScale9Sprite* background;
     void showNoAnim();
     void openAnim();
-    void onCloseButton(CCObject* sender);
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
