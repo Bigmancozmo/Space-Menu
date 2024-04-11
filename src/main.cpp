@@ -9,7 +9,7 @@
 #include <Geode/modify/LevelInfoLayer.hpp> // show
 #include <Geode/modify/EditLevelLayer.hpp> // show / reset
 
-#include "interface/sm_layer.hpp"
+#include "interface/SMLayer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <iostream>
 
