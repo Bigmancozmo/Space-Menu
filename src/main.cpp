@@ -20,7 +20,6 @@ bool buttonExists = false;
 SMLayer* smLayer;
 
 class $modify(MenuLayer){
-
     bool init() {
         if (!MenuLayer::init()) return false;
 
