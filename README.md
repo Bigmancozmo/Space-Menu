@@ -16,3 +16,5 @@
 a **free, open-source** mod menu for **Geometry Dash.**
 
 ## What's in it?
+- Noclip
+- Just that for now be patient
