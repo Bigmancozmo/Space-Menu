@@ -13,6 +13,7 @@
   </span>
 </div>
 
+<br/>
 
 a **free, open-source** mod menu for **Geometry Dash.**
 
