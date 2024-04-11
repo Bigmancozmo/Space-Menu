@@ -17,6 +17,7 @@ using namespace geode::prelude;
 using namespace keybinds;
 
 bool buttonExists = false;
+bool btnEditorMode = false;
 SMLayer* smLayer;
 
 class $modify(MenuLayer){
@@ -49,32 +50,34 @@ class $modify(MenuLayer){
     }
 };
 
+void showButton(bool reset) {
+    if (reset) {
+        smLayer->resetButtonPositioning();
+    }
+    smLayer->setVisible(false);
+    smLayer->showButton();
+    btnEditorMode = false;
+}
+
 class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
-        smLayer->resetButtonPositioning();
-
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
-        smLayer->setVisible(false);
-        smLayer->showButton();
+        showButton(true);
         return true;
     }
 };
 
 class $modify(PauseLayer) {
     void customSetup() {
-        smLayer->resetButtonPositioning();
         PauseLayer::customSetup();
-        smLayer->setVisible(true);
-        smLayer->showButton();
+        showButton(true);
     }
 };
 
 class $modify(EditLevelLayer) {
     bool init(GJGameLevel * level) {
-        smLayer->resetButtonPositioning();
         if (!EditLevelLayer::init(level)) { return false; }
-        smLayer->setVisible(true);
-        smLayer->showButton();
+        showButton(true);
         return true;
     }
 };
@@ -98,6 +101,8 @@ class $modify(EditorPauseLayer) {
         sprite->setScale(buttonSize);
         sprite->setAnchorPoint(CCPoint(0.0f, 0.0f));
         sm_button->setContentSize(CCSize(128.0f * buttonSize, 128.0f * buttonSize));
+
+        btnEditorMode = true;
 
         return true;
     }
