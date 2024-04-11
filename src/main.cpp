@@ -85,6 +85,7 @@ class $modify(EditLevelLayer) {
 class $modify(EditorPauseLayer) {
     bool init(LevelEditorLayer * level) {
         if (!EditorPauseLayer::init(level)) return false;
+        if (btnEditorMode) return true;
 
         auto guidelinesMenu = this->getChildByID("guidelines-menu");
 
