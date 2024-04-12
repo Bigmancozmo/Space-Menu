@@ -25,7 +25,7 @@ private:
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
-    CCNode* loadMod(CCMenu* menu);
+    CCNode* loadMod(CCMenu* menu, bool makeNewMenu = false);
     void onModToggle(CCObject* sender);
 };
 
@@ -93,8 +93,11 @@ bool SpaceMenu::init() {
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
 
-    auto noclip = loadMod<Noclip>(hacksMenu);
-    auto noclipFlashOnDeath = loadMod<NoclipFlashOnDeath>(hacksMenu);
+    auto playerMods = CCMenu::create();
+    hacksMenu->addChild(playerMods);
+
+    auto noclip = loadMod<Noclip>(playerMods);
+    auto noclipFlashOnDeath = loadMod<NoclipFlashOnDeath>(playerMods);
     noclipFlashOnDeath->setPositionY(32.0f);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
@@ -166,14 +169,22 @@ void SpaceMenu::onModToggle(CCObject* sender)
 }
 
 template<typename T>
-CCNode* SpaceMenu::loadMod(CCMenu* menu)
+CCNode* SpaceMenu::loadMod(CCMenu* menu, bool makeNewMenu)
 {
     CCLayer* hackLayer = CCLayer::create();
-    CCMenu* layerMenu = CCMenu::create();
+    CCMenu* layerMenu;
+    CCLayer* innerLayer;
 
-    layerMenu->setTouchPriority(-997);
+    if (makeNewMenu) {
+        layerMenu = CCMenu::create();
+        layerMenu->setTouchPriority(-997);
+    }
+    else
+    {
+        innerLayer = CCLayer::create();
+    }
     
-    auto toggler = CCMenuItemToggler::createWithStandardSprites(layerMenu, menu_selector(SpaceMenu::onModToggle), 1.0f);
+    auto toggler = CCMenuItemToggler::createWithStandardSprites(makeNewMenu ? layerMenu : menu, menu_selector(SpaceMenu::onModToggle), 1.0f);
     toggler->setAnchorPoint(CCPoint(0.5f, 0.5f));
     
     toggler->setID(T::hackKey);
@@ -182,16 +193,16 @@ CCNode* SpaceMenu::loadMod(CCMenu* menu)
 
     T::loadValue();
 
-    hackLayer->addChild(layerMenu);
-    layerMenu->setPosition(CCPoint(0.0f, 0.0f));
-    layerMenu->addChild(toggler);
+    hackLayer->addChild(makeNewMenu ? layerMenu : innerLayer);
+    (makeNewMenu ? layerMenu : innerLayer)->setPosition(CCPoint(0.0f, 0.0f));
+    (makeNewMenu ? layerMenu : innerLayer)->addChild(toggler);
 
     if (Hacks::isEnabled(T::hackKey)) {
         SpaceMenu::onModToggle(static_cast<CCObject*>(toggler)); // fake a button press
         toggler->activate();
     }
 
-    layerMenu->addChild(label);
+    (makeNewMenu ? layerMenu : innerLayer)->addChild(label);
     label->setScale(0.6f);
     label->setAnchorPoint(CCPoint(0.0f, 0.5f));
     label->setPositionX((toggler->getContentWidth() / 2) + 5.5f);
