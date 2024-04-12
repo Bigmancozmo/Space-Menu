@@ -200,7 +200,7 @@ CCObject* SpaceMenu::loadMod(CCMenu* menu)
 
     hackLayer->setContentSize(toggler->getContentSize());
 
-    menu->addChild(hackLayer);
+    //menu->addChild(hackLayer);
 
     return hackLayer;
 }
