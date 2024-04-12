@@ -4,6 +4,7 @@
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include "../hacks/Hacks.h"
+#include <Geode/ui/ListView.hpp>
 
 using namespace geode::prelude;
 using namespace std;
@@ -25,7 +26,7 @@ private:
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
-    void loadMod(CCMenu* menu);
+    CCObject* loadMod(CCMenu* menu);
     void onModToggle(CCObject* sender);
 };
 
@@ -93,7 +94,10 @@ bool SpaceMenu::init() {
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
 
-    loadMod<Noclip>(hacksMenu);
+    auto modsArray = CCArray::create(loadMod<Noclip>(hacksMenu));
+    auto modsList = ListView::create(modsArray);
+
+    menu->addChild(modsList);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
@@ -164,7 +168,7 @@ void SpaceMenu::onModToggle(CCObject* sender)
 }
 
 template<typename T>
-void SpaceMenu::loadMod(CCMenu* menu)
+CCObject* SpaceMenu::loadMod(CCMenu* menu)
 {
     CCLayer* hackLayer = CCLayer::create();
     CCMenu* layerMenu = CCMenu::create();
@@ -197,6 +201,8 @@ void SpaceMenu::loadMod(CCMenu* menu)
     hackLayer->setContentSize(toggler->getContentSize());
 
     menu->addChild(hackLayer);
+
+    return hackLayer;
 }
 
 void SpaceMenu::show()

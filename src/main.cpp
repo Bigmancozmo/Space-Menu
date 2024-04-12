@@ -82,10 +82,9 @@ class $modify(EditLevelLayer) {
     }
 };
 
-class $modify(EditorPauseLayer) {
+/*class $modify(EditorPauseLayer) {
     bool init(LevelEditorLayer * level) {
         if (!EditorPauseLayer::init(level)) return false;
-        if (btnEditorMode) return true;
 
         auto guidelinesMenu = this->getChildByID("guidelines-menu");
 
@@ -107,7 +106,7 @@ class $modify(EditorPauseLayer) {
 
         return true;
     }
-};
+};*/
 
 // register keys
 #ifdef GEODE_IS_WINDOWS
