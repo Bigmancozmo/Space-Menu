@@ -95,6 +95,7 @@ bool SpaceMenu::init() {
 
     auto playerMods = CCMenu::create();
     hacksMenu->addChild(playerMods);
+    playerMods->setPosition(CCPoint(0, 0))
 
     auto noclip = loadMod<Noclip>(playerMods);
     auto noclipFlashOnDeath = loadMod<NoclipFlashOnDeath>(playerMods);
