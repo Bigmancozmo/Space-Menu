@@ -112,6 +112,7 @@ bool SpaceMenu::init() {
     menu->setTouchPriority(-300);
     bgMenu->setTouchPriority(-999);
     hacksMenu->setTouchPriority(-998);
+    playerMods->setTouchPriority(-997);
 
     meImCool = this;
 
