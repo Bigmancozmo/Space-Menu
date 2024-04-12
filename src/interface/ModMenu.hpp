@@ -4,7 +4,6 @@
 #include <iostream>
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include "../hacks/Hacks.h"
-#include <Geode/ui/ListView.hpp>
 
 using namespace geode::prelude;
 using namespace std;
@@ -94,10 +93,7 @@ bool SpaceMenu::init() {
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
 
-    auto modsArray = CCArray::create(loadMod<Noclip>(hacksMenu));
-    auto modsList = ListView::create(modsArray);
-
-    menu->addChild(modsList);
+    loadMod<Noclip>(hacksMenu);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
