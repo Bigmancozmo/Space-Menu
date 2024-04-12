@@ -25,7 +25,7 @@ private:
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
-    CCObject* loadMod(CCMenu* menu);
+    CCNode* loadMod(CCMenu* menu);
     void onModToggle(CCObject* sender);
 };
 
@@ -93,7 +93,9 @@ bool SpaceMenu::init() {
     creatorInfoContainer->addChild(fullLogoSprite);
     background->addChild(creatorInfoContainer);
 
-    loadMod<Noclip>(hacksMenu);
+    auto noclip = loadMod<Noclip>(hacksMenu);
+    auto noclipFlashOnDeath = loadMod<NoclipFlashOnDeath>(hacksMenu);
+    noclipFlashOnDeath->setPositionY(32.0f);
 
     auto touchDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
     this->setTouchEnabled(true);
@@ -164,7 +166,7 @@ void SpaceMenu::onModToggle(CCObject* sender)
 }
 
 template<typename T>
-CCObject* SpaceMenu::loadMod(CCMenu* menu)
+CCNode* SpaceMenu::loadMod(CCMenu* menu)
 {
     CCLayer* hackLayer = CCLayer::create();
     CCMenu* layerMenu = CCMenu::create();
