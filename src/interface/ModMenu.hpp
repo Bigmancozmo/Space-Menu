@@ -25,7 +25,7 @@ private:
     SpaceMenu* meImCool;
     CCLayerColor* backgroundFade;
     template<typename T>
-    CCNode* loadMod(CCMenu* menu, bool makeNewMenu = false);
+    CCNode* loadMod(CCMenu* menu, bool makeNewMenu = true); // false is broken
     void onModToggle(CCObject* sender);
 };
 
