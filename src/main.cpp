@@ -8,6 +8,7 @@
 #include <Geode/modify/LevelSelectLayer.hpp> // show
 #include <Geode/modify/LevelInfoLayer.hpp> // show
 #include <Geode/modify/EditLevelLayer.hpp> // show / reset
+#include <Geode/modify/CreatorLayer.hpp>
 
 #include "interface/SMLayer.hpp"
 #include <geode.custom-keybinds/include/Keybinds.hpp>
@@ -51,9 +52,9 @@ class $modify(MenuLayer){
 };
 
 void showButton(bool reset) {
-    if (reset) {
-        smLayer->resetButtonPositioning();
-    }
+    //if (reset) {
+    //    smLayer->resetButtonPositioning();
+    //}
     smLayer->setVisible(false);
     smLayer->showButton();
     btnEditorMode = false;
@@ -62,7 +63,7 @@ void showButton(bool reset) {
 class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
-        showButton(true);
+        smLayer->hideButton();
         return true;
     }
 };
@@ -70,14 +71,22 @@ class $modify(PlayLayer) {
 class $modify(PauseLayer) {
     void customSetup() {
         PauseLayer::customSetup();
-        showButton(true);
+        smLayer->showButton();
     }
 };
 
 class $modify(EditLevelLayer) {
     bool init(GJGameLevel * level) {
         if (!EditLevelLayer::init(level)) { return false; }
-        showButton(true);
+        smLayer->hideButton();
+        return true;
+    }
+};
+
+class $modify(CreatorLayer) {
+    bool init() {
+        if (!CreatorLayer::init()) { return false; }
+        smLayer->showButton();
         return true;
     }
 };
