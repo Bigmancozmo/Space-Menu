@@ -51,9 +51,9 @@ class $modify(MenuLayer){
 };
 
 void showButton(bool reset) {
-    if (reset) {
-        smLayer->resetButtonPositioning();
-    }
+    //if (reset) {
+    //    smLayer->resetButtonPositioning();
+    //}
     smLayer->setVisible(false);
     smLayer->showButton();
     btnEditorMode = false;
@@ -62,7 +62,14 @@ void showButton(bool reset) {
 class $modify(PlayLayer) {
     bool init(GJGameLevel * level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
-        showButton(true);
+        FLAlertLayer* popup = FLAlertLayer::create(
+            "SpaceMenu",
+            "Welcome to SpaceMenu!\n<cb>Use the Page Down key or press the button.</c>",
+            "OK"
+        );
+        popup->m_scene = this;
+        popup->show();
+        smLayer->showButton();
         return true;
     }
 };
@@ -70,14 +77,14 @@ class $modify(PlayLayer) {
 class $modify(PauseLayer) {
     void customSetup() {
         PauseLayer::customSetup();
-        showButton(true);
+        smLayer->showButton();
     }
 };
 
 class $modify(EditLevelLayer) {
     bool init(GJGameLevel * level) {
         if (!EditLevelLayer::init(level)) { return false; }
-        showButton(true);
+        smLayer->showButton();
         return true;
     }
 };
