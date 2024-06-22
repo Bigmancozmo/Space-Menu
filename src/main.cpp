@@ -83,14 +83,6 @@ class $modify(EditLevelLayer) {
     }
 };
 
-class $modify(CreatorLayer) {
-    bool init() {
-        if (!CreatorLayer::init()) { return false; }
-        smLayer->showButton();
-        return true;
-    }
-};
-
 /*class $modify(EditorPauseLayer) {
     bool init(LevelEditorLayer * level) {
         if (!EditorPauseLayer::init(level)) return false;
