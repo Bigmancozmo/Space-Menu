@@ -1,3 +1,7 @@
+# THIS PROJECT IS MOSTLY DISCONTINUED!!!
+# Feel free to fork it and continue.
+## (but make sure to give credit)
+
 # <img src="https://github.com/Bigmancozmo/Space-Menu/blob/main/res/logos/SM_FullLogo.png" alt="SpaceMenu Logo With Name">
 
 <div align=center>
